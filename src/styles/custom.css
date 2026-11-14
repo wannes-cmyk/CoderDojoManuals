@@ -223,6 +223,17 @@ h2.stap.is-klaar::before { background: var(--inkt); color: var(--geel); }
   white-space: nowrap;
 }
 .stap-klaar:hover { background: var(--plaat); }
+.stap-fout {
+  grid-column: 1 / -1;
+  justify-self: end;
+  margin-top: -0.35rem;
+  font-size: 0.875rem;
+  color: var(--inkt-zacht);
+  text-decoration: underline;
+  text-decoration-color: var(--lijn);
+  text-underline-offset: 0.2em;
+}
+.stap-fout:hover { color: var(--inkt); text-decoration-color: var(--inkt); }
 .stap-klaar[aria-pressed='true'] { background: var(--inkt); color: var(--geel); }
 @media (prefers-reduced-motion: no-preference) {
   h2.stap.is-klaar::before { animation: stempel 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -295,7 +306,7 @@ pre.blocks svg { display: block; max-width: none; }
   :root, :root[data-theme='light'] { --grond: #fff; --grond-diep: #fff; --sl-color-bg: #fff; --sl-color-black: #fff; }
   html, body { background: #fff !important; }
   header.header, .sidebar-pane, .right-sidebar-container, mobile-starlight-toc,
-  .manual-knoppen, .stap-klaar, .coach, .pagination-links, .site-voet,
+  .manual-knoppen, .stap-klaar, .stap-fout, .coach, .pagination-links, .site-voet,
   starlight-menu-button { display: none !important; }
   .main-frame, .main-pane, .sl-container { padding: 0 !important; margin: 0 !important; max-width: none !important; }
   body { font-size: 11pt; }

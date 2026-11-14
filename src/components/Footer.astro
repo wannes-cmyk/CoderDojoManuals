@@ -3,6 +3,10 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 
 const { entry } = Astro.locals.starlightRoute;
 const d = entry.data;
+
+// Op een manual geven we de titel mee, zodat het formulier weet waarover het gaat.
+const formulier = 'https://tally.so/r/laekdV';
+const meld = d.niveau ? `${formulier}?manual=${encodeURIComponent(d.title)}` : formulier;
 ---
 {d.niveau && d.bron && (
   <section class="bron" aria-label="Bron">
@@ -13,13 +17,13 @@ const d = entry.data;
   </section>
 )}
 <Default />
-<div class="site-voet">
+<div class="site-voet" data-formulier={formulier} data-manual={d.niveau ? d.title : undefined}>
   <p>
     Tekst en opdrachten: <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.nl">CC BY-SA 4.0</a>.
     Code: MIT. Bronmateriaal van CoderDojo Belgium.
   </p>
   <p>
-    Fout gezien of een idee? <a href="https://tally.so/r/laekdV" target="_blank" rel="noopener">Laat het weten</a>.
+    Fout gezien of een idee? <a href={meld} target="_blank" rel="noopener">Laat het weten</a>.
   </p>
 </div>
 

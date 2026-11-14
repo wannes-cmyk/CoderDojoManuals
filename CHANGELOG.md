@@ -19,6 +19,8 @@ Het formaat volgt [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) en he
 - Sjabloon en werkwijze om een nieuwe manual toe te voegen (`docs/`).
 - Inventaris van het bronmateriaal (`docs/inventaris.md`).
 - Feedbackformulier (Tally), bereikbaar via een link onderaan elke pagina. Er wordt geen extra script op de site geladen. Het e-mailadres is niet verplicht.
+- Link "Klopt er iets niet?" bij elke stap. Het formulier weet dan vanzelf over welke manual en welke stap het gaat.
+- In het feedbackformulier kan je een screenshot van je Scratch toevoegen. Niet verplicht.
 - Anonieme bezoekcijfers via Simple Analytics, zonder cookies en zonder persoonsgegevens.
 
 ### Bekend

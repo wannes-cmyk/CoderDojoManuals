@@ -39,6 +39,10 @@ function bewaar(klaar: string[]) {
 
 const klaar = new Set(lees());
 
+const voet = document.querySelector<HTMLElement>('.site-voet');
+const formulier = voet?.dataset.formulier;
+const manual = voet?.dataset.manual;
+
 document.querySelectorAll<HTMLElement>('h2.stap').forEach((kop) => {
   const nr = kop.dataset.stap ?? '';
   const knop = document.createElement('button');
@@ -62,4 +66,17 @@ document.querySelectorAll<HTMLElement>('h2.stap').forEach((kop) => {
   });
 
   (kop.parentElement ?? kop).append(knop);
+
+  // Een kind schrijft al snel "het werkt niet" zonder te zeggen waar.
+  // Deze link vult de manual en de stap zelf in het formulier in.
+  if (formulier && manual) {
+    const link = document.createElement('a');
+    link.className = 'stap-fout';
+    link.href = `${formulier}?manual=${encodeURIComponent(manual)}&stap=${encodeURIComponent(nr)}`;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'Klopt er iets niet?';
+    link.setAttribute('aria-label', `Meld een fout in stap ${nr}`);
+    (kop.parentElement ?? kop).append(link);
+  }
 });
