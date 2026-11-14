@@ -13,8 +13,6 @@ Lezer: een ninja van 8 tot 14 met Scratch open ernaast. Vraag: "wat moet ik nu d
 
 Inhoud: titel, wat je maakt, wat je nodig hebt, genummerde stappen met blokjes, testmomenten, uitdagingen, coachblok, bronvermelding. Geen eigen beeldmateriaal.
 
-Onbeslist: Tally-formulier voor feedback bestaat nog niet.
-
 ## Direction contract
 
 THESIS: een manual is een bouwboekje. De pagina telt stappen zoals een bouwinstructie, en weigert de standaard documentatiepagina met grijze zijbalk en een rij gelijke kaarten.

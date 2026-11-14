@@ -36,12 +36,11 @@ De blokjes worden getekend zoals in Scratch zelf, in het Nederlands, in plaats v
 - Elke manual heeft een niveau (beginner, gevorderd, expert), een duur en een lijst concepten. Er is geen verplicht leerpad: de ninja kiest zelf.
 - Elke manual vermeldt het origineel, met een link naar het bestand in de Drive.
 - Coachinfo zit achter een knop.
-- Feedback gaat via een link naar een Tally-formulier, niet via een embed. Pull requests kunnen ook.
+- Feedback gaat via een link naar het Tally-formulier (https://tally.so/r/laekdV), niet via een embed. Het formulier vraagt een naam, een bericht en een e-mailadres dat niet verplicht is, en heeft een captcha. Issues en pull requests kunnen ook.
 - Geen trackers. Enkel Simple Analytics, zonder cookies en zonder persoonsgegevens.
 - Nooit namen of gegevens van kinderen in code, issues of commits.
 - Nederlands (Vlaams) eerst. De structuur moet vertalingen toelaten.
 - Enkel lesmanuals. Wedstrijden, spaarkaarten en beursdemo's horen er nu niet bij.
-- Nog niet beslist: het Tally-formulier voor deze site bestaat nog niet.
 
 ## Brand Commitments
 

@@ -85,4 +85,4 @@ Scratch is een project van de Scratch Foundation. Deze site is daar niet aan ver
 
 ## Support
 
-Dit is een persoonlijk project. Geen support, use as is. Een fout of een idee meld je via de [issues](https://github.com/wannes-cmyk/CoderDojoManuals/issues/new/choose). Zet er nooit gegevens van kinderen in.
+Dit is een persoonlijk project. Geen support, use as is. Een fout of een idee meld je via het [feedbackformulier](https://tally.so/r/laekdV) of via de [issues](https://github.com/wannes-cmyk/CoderDojoManuals/issues/new/choose). Zet er nooit gegevens van kinderen in.
