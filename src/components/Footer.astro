@@ -1,0 +1,28 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const { entry } = Astro.locals.starlightRoute;
+const d = entry.data;
+---
+{d.niveau && d.bron && (
+  <section class="bron" aria-label="Bron">
+    <p>
+      Deze manual is een herwerking van <a href={d.bron.url}>{d.bron.titel}</a>, gemaakt door {d.bron.door}.
+      Herwerkt naar Scratch 3.
+    </p>
+  </section>
+)}
+<Default />
+<div class="site-voet">
+  <p>
+    Tekst en opdrachten: <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.nl">CC BY-SA 4.0</a>.
+    Code: MIT. Bronmateriaal van CoderDojo Belgium.
+  </p>
+  <p>
+    Fout gezien of een idee? <a href="https://tally.so/r/laekdV" target="_blank" rel="noopener">Laat het weten</a>.
+  </p>
+</div>
+
+<script>
+  import '../scripts/pagina.ts';
+</script>

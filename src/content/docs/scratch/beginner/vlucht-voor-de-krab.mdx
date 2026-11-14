@@ -1,0 +1,98 @@
+---
+title: Vlucht voor de krab
+niveau: beginner
+duur: 30 minuten
+watJeMaakt: Een spel waarin je moet weglopen van een krab. Wie zich laat bijten, verliest.
+concepten: [besturen met toetsen, volgen, variabele, raken]
+sidebar:
+  order: 4
+bron:
+  titel: Fiche vlucht voor de krab
+  url: https://drive.google.com/file/d/1pjv3kTl8w7pKaWh385-plCtML9aABXsW/view
+  door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- Geluid, als je de gil wil horen
+</Nodig>
+
+## Stap 1: Maak het strand
+
+Verwijder de kat. Klik op **Kies een achtergrond** en zoek een strand. In het Engels is dat **beach**.
+
+## Stap 2: Kies je speler en de krab
+
+Klik op **Kies een sprite** en kies een speler uit de groep **Mensen**. Doe dat nog eens en zoek de **krab** (Crab).
+
+Geef ze een duidelijke naam. Klik op de sprite en typ bovenaan bij **Sprite**: `speler` en `krab`.
+
+Zijn ze te groot? Zet bij **Grootte** het getal op 50.
+
+## Stap 3: Laat de speler lopen
+
+Klik op de **speler** en bouw deze vier scripts. Het blok **maak draaistijl** zorgt dat je speler niet op zijn kop gaat lopen.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak draaistijl [links-rechts v]
+ga naar x: (-150) y: (0)
+
+wanneer [pijltje rechts v] is ingedrukt
+richt naar (90) graden
+neem (10) stappen
+
+wanneer [pijltje links v] is ingedrukt
+richt naar (-90) graden
+neem (10) stappen
+
+wanneer [pijltje omhoog v] is ingedrukt
+verander y met (10)
+
+wanneer [pijltje omlaag v] is ingedrukt
+verander y met (-10)
+```
+
+<Test>Druk op de pijltjestoetsen. Loopt je speler alle kanten op?</Test>
+
+## Stap 4: Tel je score
+
+Hoe lang hou jij het vol? Klik bij de blokjes op **Variabelen** en dan op **Maak een variabele**. Noem ze `score`.
+
+## Stap 5: Laat de krab jagen
+
+Klik op de **krab**. Kies eerst een gil: tabblad **Geluiden**, **Kies een geluid** en zoek op **scream**.
+
+Bouw dan dit script:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak draaistijl [links-rechts v]
+ga naar x: (180) y: (120)
+maak [score v] (0)
+herhaal
+  richt naar (speler v)
+  neem (3) stappen
+  verander [score v] met (1)
+  als <raak ik (speler v)?> dan
+    start geluid (Scream1 v) en wacht
+    stop [alle v]
+  einde
+einde
+```
+
+<Test>Klik op de groene vlag en loop! Stopt het spel als de krab je te pakken heeft?</Test>
+
+## Uitdagingen
+
+- Te makkelijk? Maak de krab sneller.
+- Laat de krab steeds sneller worden hoe langer het spel duurt.
+- Voeg een tweede krab toe.
+- Laat de speler iets zeggen als hij gebeten wordt.
+
+<Coach>
+Nieuw hier: een variabele en een voorwaarde (**als ... dan**). Laat de ninja hardop lezen wat het script van de krab doet, blok per blok.
+
+In het origineel zat de variabele op het speelveld. Dat maakt geen verschil: een variabele "voor alle sprites" werkt overal.
+</Coach>

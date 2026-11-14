@@ -1,0 +1,211 @@
+---
+title: Attack of the clones
+niveau: expert
+duur: 60 minuten
+watJeMaakt: Een scherm vol kruipende beestjes. Omdat je nooit genoeg exemplaren van iets kan hebben.
+concepten: [klonen, eigen blokken, variabelen per kloon, verdubbelen]
+sidebar:
+  order: 1
+bron:
+  titel: Attack of the clones
+  url: https://docs.google.com/document/d/1P1YFLFINVfE3Wbv2VuGQodvtIJlcrt0H2OT4XNr23Wc/edit
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+Soms is het plezant om eens goed te overdrijven. Een ijsje met zeven bollen is cooler dan een met één bol. En een project met overdreven veel sprites maakt meer indruk dan een project met één sprite.
+
+<Nodig>
+- Scratch, open in je browser
+- Een beest uit de bibliotheek, zoals de **kever** (Beetle), of je eigen tekening
+</Nodig>
+
+## Stap 1: Begin met één beest
+
+Zelfs overdreven dingen beginnen klein. Verwijder de kat en kies één beest. Maak het klein: **Grootte** 30.
+
+Een beest dat niks doet is niet boeiend. Laat het kruipen:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+ga naar (willekeurige positie v)
+richt naar (willekeurig getal tussen (1) en (360)) graden
+herhaal
+  neem (3) stappen
+  keer om aan de rand
+einde
+```
+
+<Test>Klik op de vlag. Kruipt er één beest over je scherm?</Test>
+
+<LetOp>Bewaar je project nu. Je hebt deze versie straks nog nodig.</LetOp>
+
+## Stap 2: Kopieer erop los
+
+Klik met je **rechter**muisknop op de sprite en kies **dupliceren**. Doe dat tot je een stuk of tien beesten hebt.
+
+<Test>Klik op de vlag. Een hele bende!</Test>
+
+Makkelijk dus. Maar wat als je de beesten sneller wil laten lopen? Dan moet je dat in elk van de tien scripts aanpassen. Saai. En de kans is groot dat je er een vergeet.
+
+Er is een slimmere manier, voor luie ninja's die niet graag duizend keer klikken maar liever één keer goed nadenken.
+
+## Stap 3: Maak je eerste kloon
+
+Een **kloon** is een exacte kopie van iets. Sommige planten en bacteriën maken in het echt een kopie van zichzelf. Een **clown** is een gekkerd uit het circus en heeft hier niets mee te maken.
+
+Verwijder eerst alle kopieën tot je één beest overhoudt. Of open de versie die je daarstraks bewaard hebt. Slim, hè.
+
+Het blok **maak een kloon van mijzelf** vind je bij **Besturen**. Zet het in je script:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak een kloon van (mijzelf v)
+ga naar (willekeurige positie v)
+richt naar (willekeurig getal tussen (1) en (360)) graden
+herhaal
+  neem (3) stappen
+  keer om aan de rand
+einde
+```
+
+<Test>Klik op de vlag. Er is een tweede beest! Gratis en voor niks. Maar het is een lui beest: het wandelt niet.</Test>
+
+Dat komt omdat het blok met de groene vlag niet werkt voor een kloon.
+
+## Stap 4: Zet de kloon aan het werk
+
+Een kloon start met zijn eigen blok: **wanneer ik als kloon start**.
+
+```scratch
+wanneer ik als kloon start
+ga naar (willekeurige positie v)
+richt naar (willekeurig getal tussen (1) en (360)) graden
+herhaal
+  neem (3) stappen
+  keer om aan de rand
+einde
+```
+
+<Test>Klik op de vlag. Wandelen er nu twee beesten?</Test>
+
+## Stap 5: Pak het wandelen in
+
+Zag je het? Het wandelstuk staat er twee keer. Dat is weer dubbel werk als je iets wil aanpassen. Programmeurs pakken zo'n stuk in een eigen blok.
+
+Klik op **Mijn blokken**, dan **Maak een blok**, en noem het `wandel`.
+
+```scratch
+definieer wandel
+ga naar (willekeurige positie v)
+richt naar (willekeurig getal tussen (1) en (360)) graden
+herhaal
+  neem (3) stappen
+  keer om aan de rand
+einde
+
+wanneer ik als kloon start
+wandel :: custom
+```
+
+## Stap 6: Overdrijven wordt nu een makkie
+
+Zet het kloonblok in een **herhaal**. Het echte beest verstoppen we: het is enkel nog het voorbeeld voor de klonen.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+herhaal (20)
+  maak een kloon van (mijzelf v)
+einde
+
+wanneer ik als kloon start
+verschijn
+wandel :: custom
+```
+
+<Test>Klik op de vlag. Twintig beesten! Verander nu de snelheid in je blok **wandel**. Lopen ze allemaal sneller?</Test>
+
+<LetOp>
+Scratch wordt traag als je te veel klonen maakt. Bewaar dus op tijd. Oneindig veel kan niet: Scratch laat maximaal 300 klonen toe.
+</LetOp>
+
+## Stap 7: Klonen op commando
+
+Altijd evenveel beesten is misschien niet wat je wil. Maak één nieuw beest telkens je op de spatiebalk drukt. Zet dit bij het **beest**:
+
+```scratch
+wanneer [spatiebalk v] is ingedrukt
+maak een kloon van (mijzelf v)
+```
+
+<Test>
+Haal de **herhaal 20** even weg en zet één kloonblok onder de vlag. Start, en druk op de spatiebalk. Twee beesten. Druk nog eens. Drie? Nee, vier! Nog eens: acht!
+</Test>
+
+Wat is er aan de hand? Scratch kapot? Denk even na voor je verder leest.
+
+## Stap 8: Los de beestenplaag op
+
+Gevonden? Het script met de spatiebalk staat bij het beest. Dus voert **elke kloon** het ook uit. Bij elke druk op de spatiebalk **verdubbelt** het aantal beesten.
+
+De oplossing: haal het script weg bij het beest en zet het bij het **speelveld**.
+
+```scratch
+wanneer [spatiebalk v] is ingedrukt
+maak een kloon van (Beetle v)
+```
+
+Kies in het blokje de naam van jouw beest.
+
+<Tip titel="Verdubbelen gaat rapper dan je denkt">
+Lang geleden wou een koning de uitvinder van het schaakspel belonen. "Doe mij maar rijst", zei die. "Eén korrel op het eerste vakje, twee op het tweede, vier op het derde, en zo telkens het dubbele tot alle 64 vakjes vol liggen."
+
+Goedkoop, dacht de koning. Hij moest meer dan 18 triljoen rijstkorrels geven. Niemand weet of het echt gebeurd is, maar de som klopt.
+</Tip>
+
+## Stap 9: Geef elke kloon een eigen getal
+
+Als je een variabele maakt, kies je **Voor alle sprites** of **Alleen voor deze sprite**.
+
+Kies je **Alleen voor deze sprite**, dan krijgt elke kloon zijn eigen exemplaar van die variabele. Ze wordt als het ware mee gekloond. Zo kan je tellen hoe vaak er op elke kloon geklikt werd:
+
+```scratch
+wanneer op deze sprite wordt geklikt
+verander [klikken v] met (1)
+zeg (klikken) (1) sec.
+```
+
+## Stap 10: Ruim een kloon op
+
+Je kan een kloon ook weer wegdoen. Pas je blok **wandel** aan zodat een beest verdwijnt zodra het de rand raakt:
+
+```scratch
+definieer wandel
+ga naar x: (0) y: (0)
+richt naar (willekeurig getal tussen (1) en (360)) graden
+herhaal
+  neem (3) stappen
+  als <raak ik (rand v)?> dan
+    verwijder deze kloon
+  einde
+einde
+```
+
+Met **verwijder deze kloon** verdwijnt enkel een kloon. De echte sprite blijft altijd bestaan.
+
+Heb je dit allemaal doorworsteld? Cool gedaan.
+
+## Uitdagingen
+
+- **Bananenmoes.** Maak een aap die bananen afvuurt. Met de pijltjes draai je de aap. De bananen vliegen in de richting waarin de aap kijkt.
+- **Mooi geordend.** Vul je scherm met bolletjes in nette rijen en kolommen. Klik je op een bolletje, dan verdwijnt het met een plop.
+- **Nummertje trekken.** Laat tien beesten rondkruipen. Elk beest zegt het hoeveelste beest het is.
+- **Memory.** Maak een memoryspel. Vind je twee dezelfde kaarten, dan win je 5 miljard punten.
+
+<Coach>
+De kern van deze manual is stap 7 en 8: de ninja loopt bewust in de val van het verdubbelen. Geef het antwoord niet te snel, het moment waarop het kwartje valt is het hele punt.
+
+Achtergrond: klonen erven alle scripts van hun sprite, ook de scripts met **wanneer toets is ingedrukt**. Enkel de groene vlag start geen klonen, omdat alle klonen bij een nieuwe start verwijderd worden.
+
+In het origineel stond een limiet van 301 klonen. In Scratch 3 is dat 300.
+</Coach>

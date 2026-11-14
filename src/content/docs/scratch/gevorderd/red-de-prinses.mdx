@@ -1,0 +1,131 @@
+---
+title: Red de prinses
+niveau: gevorderd
+duur: 45 minuten
+watJeMaakt: Een doolhof. Loods de kat langs de muren en de haai tot bij de prinses.
+concepten: [x en y, kleur raken, voorwaarden, meerdere sprites]
+sidebar:
+  order: 1
+bron:
+  titel: Red de prinses (doolhof)
+  url: https://drive.google.com/file/d/1DrJT76VpRwUFFMg90SXxZl9_d8CT4IlQ/view
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- De kat (die mag deze keer blijven)
+- De sprites **prinses** (Princess) en **haai** (Shark) uit de bibliotheek
+</Nodig>
+
+## Stap 1: Maak de kat kleiner
+
+Een grote kat past niet door een doolhof. Klik op de kat en zet **Grootte** op 30. Sleep haar naar de hoek links onderaan.
+
+## Stap 2: Teken een doolhof
+
+1. Klik onderaan rechts op het **speelveld** en dan op het tabblad **Achtergronden**.
+2. Kies de **lijn**, kies **rood** en maak de lijn dik.
+3. Teken eerst de randen, daarna de muurtjes binnenin.
+
+<Tip>Met **Shift** ingedrukt krijg je rechte lijnen.</Tip>
+
+<LetOp>Laat in het midden een open stuk zonder muurtjes. Daar zwemt straks de haai.</LetOp>
+
+## Stap 3: Leer de kat lopen
+
+Klik op de **kat** en bouw dit script. Bij elk pijltje verandert x of y een klein beetje.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+herhaal
+  als <toets (pijltje rechts v) ingedrukt?> dan
+    verander x met (3)
+  einde
+  als <toets (pijltje links v) ingedrukt?> dan
+    verander x met (-3)
+  einde
+  als <toets (pijltje omhoog v) ingedrukt?> dan
+    verander y met (3)
+  einde
+  als <toets (pijltje omlaag v) ingedrukt?> dan
+    verander y met (-3)
+  einde
+einde
+```
+
+<Test>Klik op de vlag en druk op de pijltjes. Loopt de kat? Ze loopt nu nog dwars door de muren.</Test>
+
+## Stap 4: Raak je een muur, dan begin je opnieuw
+
+Kijk waar je kat aan de start staat. Onder het speelveld zie je haar **x** en **y**. Die getallen heb je nodig.
+
+Zet onder de vlag een blok dat de kat naar de start stuurt. Zet in je **herhaal** een **als**-blok dat hetzelfde doet wanneer ze rood raakt. Gebruik de **pipet** om het rood van je muur te kiezen.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+ga naar x: (-200) y: (-140)
+herhaal
+  als <raak ik kleur [#ff0000]?> dan
+    ga naar x: (-200) y: (-140)
+  einde
+einde
+```
+
+Dit mag een tweede script zijn naast het vorige. Vul jouw eigen x en y in.
+
+<Test>Loop tegen een muur. Vlieg je terug naar de start?</Test>
+
+## Stap 5: Bij de prinses heb je gewonnen
+
+Klik op **Kies een sprite** en zoek de **prinses** (Princess). Maak ze kleiner en sleep ze naar de hoek links bovenaan.
+
+Klik terug op de **kat** en zet dit in je **herhaal**:
+
+```scratch
+als <raak ik (Princess v)?> dan
+  zeg [Gewonnen!] (2) sec.
+  stop [alle v]
+einde
+```
+
+## Stap 6: Pas op voor de haai
+
+Kies de sprite **haai** (Shark), maak hem kleiner en zet hem in het open stuk in het midden. Klik op de haai en bouw:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak draaistijl [links-rechts v]
+herhaal
+  neem (4) stappen
+  keer om aan de rand
+einde
+```
+
+## Stap 7: Bijt de haai, dan ben je verloren
+
+Klik terug op de **kat** en zet dit in je **herhaal**:
+
+```scratch
+als <raak ik (Shark v)?> dan
+  zeg [Verloren...] (2) sec.
+  stop [alle v]
+einde
+```
+
+<Test>Speel je spel van begin tot einde. Kan je winnen? Kan je verliezen?</Test>
+
+## Uitdagingen
+
+- Voeg een tweede haai toe die op en neer zwemt.
+- Tel hoeveel keer je tegen een muur liep.
+- Zet een klok op het spel: hoe snel ben jij bij de prinses?
+- Teken een tweede doolhof en ga daarheen als je de prinses raakt.
+
+<Coach>
+Nieuw: bewegen met x en y in plaats van met stappen, en een lus die voortdurend toetsen controleert. Dat loopt vloeiender dan **wanneer toets is ingedrukt**.
+
+Typische fout: de muurkleur in het blok is niet exact de kleur van de muur. Altijd de pipet gebruiken.
+
+Als de kat blijft haperen aan de start, staat de startplek op of tegen een muur.
+</Coach>

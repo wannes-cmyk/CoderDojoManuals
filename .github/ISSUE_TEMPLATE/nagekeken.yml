@@ -1,0 +1,25 @@
+name: Manual nagebouwd
+description: Je hebt een manual van begin tot einde nagebouwd in Scratch 3
+title: "Nagekeken: "
+labels: ["manual", "nagekeken"]
+body:
+  - type: input
+    id: manual
+    attributes:
+      label: Welke manual?
+    validations:
+      required: true
+  - type: dropdown
+    id: resultaat
+    attributes:
+      label: Werkt alles zoals beschreven?
+      options:
+        - Ja, alles klopt
+        - Bijna, zie hieronder
+        - Nee, zie hieronder
+    validations:
+      required: true
+  - type: textarea
+    id: opmerkingen
+    attributes:
+      label: Wat moet er anders?

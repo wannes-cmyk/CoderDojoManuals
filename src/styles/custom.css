@@ -1,0 +1,317 @@
+/*
+ * Bouwboekje: de visuele wereld van de site.
+ * Lichtblauwe grond, marineblauwe inkt, geel voor wat je moet onthouden,
+ * groen voor testen (de vlag), rood enkel voor "let op".
+ * Zie DESIGN.md voor het waarom.
+ */
+:root,
+:root[data-theme='light'] {
+  --grond: oklch(0.945 0.032 235);
+  --grond-diep: oklch(0.9 0.045 238);
+  --plaat: oklch(0.995 0.004 235);
+  --inkt: oklch(0.24 0.06 262);
+  --inkt-zacht: oklch(0.4 0.06 258);
+  --lijn: oklch(0.78 0.05 242);
+  --blauw: oklch(0.44 0.15 258);
+  --blauw-diep: oklch(0.36 0.14 260);
+  --geel: oklch(0.89 0.165 96);
+  --geel-zacht: oklch(0.955 0.085 98);
+  --groen: oklch(0.5 0.14 150);
+  --groen-zacht: oklch(0.94 0.06 150);
+  --rood: oklch(0.52 0.19 27);
+  --rood-zacht: oklch(0.94 0.04 27);
+
+  --letter-titel: 'Archivo Variable', 'Arial Narrow', sans-serif;
+  --letter-tekst: 'Andika', system-ui, sans-serif;
+
+  --rond: 0.625rem;
+  --schaduw: 0 2px 0 oklch(0.24 0.06 262 / 0.12), 0 8px 20px -12px oklch(0.24 0.06 262 / 0.35);
+
+  /* Starlight volgt onze kleuren. */
+  --sl-font: var(--letter-tekst);
+  --sl-color-white: var(--inkt);
+  --sl-color-gray-1: var(--inkt);
+  --sl-color-gray-2: var(--inkt);
+  --sl-color-gray-3: var(--inkt-zacht);
+  --sl-color-gray-4: var(--inkt-zacht);
+  --sl-color-gray-5: var(--lijn);
+  --sl-color-gray-6: var(--grond-diep);
+  --sl-color-gray-7: var(--grond);
+  --sl-color-black: var(--grond);
+  --sl-color-accent-low: var(--geel-zacht);
+  --sl-color-accent: var(--blauw);
+  --sl-color-accent-high: var(--blauw-diep);
+  --sl-color-text: var(--inkt);
+  --sl-color-text-accent: var(--blauw-diep);
+  --sl-color-bg: var(--grond);
+  --sl-color-bg-nav: var(--blauw);
+  --sl-color-bg-sidebar: var(--grond);
+  --sl-color-bg-inline-code: var(--plaat);
+  --sl-color-hairline: var(--lijn);
+  --sl-color-hairline-light: var(--lijn);
+  --sl-color-hairline-shade: var(--lijn);
+  --sl-text-body: 1.0625rem;
+  --sl-line-height: 1.6;
+  --sl-content-width: 42rem;
+}
+
+@media (min-width: 72rem) {
+  :root { --sl-text-body: 1.125rem; }
+}
+
+::selection { background: var(--geel); color: var(--inkt); }
+html { caret-color: var(--blauw); scrollbar-color: var(--blauw) var(--grond-diep); }
+:focus-visible { outline: 3px solid var(--blauw-diep); outline-offset: 3px; border-radius: 0.25rem; }
+
+/* Kopbalk: één blauw vlak over de volle breedte. */
+header.header { border-bottom: 0; }
+.site-title { color: var(--plaat); font-family: var(--letter-titel); font-stretch: 112%; font-weight: 800; letter-spacing: -0.01em; }
+header.header .social-icons a,
+header.header starlight-menu-button button { color: var(--plaat); }
+header.header .social-icons::after { border-color: oklch(1 0 0 / 0.3); }
+header.header .site-title:focus-visible,
+header.header a:focus-visible,
+header.header button:focus-visible { outline-color: var(--geel); }
+site-search > button[data-open-modal] {
+  background: var(--plaat);
+  color: var(--inkt);
+  border: 0;
+}
+site-search > button[data-open-modal] kbd { background: var(--grond); color: var(--inkt-zacht); }
+
+/* Navigatie: waar sta ik. De huidige pagina is een gele plaat. */
+.sidebar-pane { border-inline-end: 2px solid var(--lijn); }
+.sidebar-content .large,
+.sidebar-content summary .large,
+.sidebar-content .group-label .large { font-family: var(--letter-titel); font-stretch: 108%; font-weight: 700; color: var(--inkt); }
+.sidebar-content a { color: var(--inkt); border-radius: 0.375rem; }
+.sidebar-content a:hover { background: var(--grond-diep); }
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover { background: var(--geel); color: var(--inkt); font-weight: 700; }
+
+.right-sidebar { border-inline-start: 0; }
+starlight-toc a[aria-current='true'] { color: var(--inkt); font-weight: 700; text-decoration: underline; text-decoration-color: var(--geel); text-decoration-thickness: 0.25em; text-underline-offset: 0.2em; }
+
+/* Titels */
+h1#_top {
+  font-family: var(--letter-titel);
+  font-stretch: 112%;
+  font-weight: 850;
+  font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--inkt);
+  text-wrap: balance;
+}
+.sl-markdown-content :is(h2, h3, h4) {
+  font-family: var(--letter-titel);
+  font-stretch: 106%;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  color: var(--inkt);
+  text-wrap: balance;
+}
+.sl-markdown-content h2 { font-size: clamp(1.5rem, 1.25rem + 1vw, 1.875rem); line-height: 1.15; }
+.sl-markdown-content h3 { font-size: 1.25rem; }
+.sl-markdown-content a { color: var(--blauw-diep); text-decoration-thickness: 0.09em; text-underline-offset: 0.18em; }
+.sl-markdown-content a:hover { color: var(--inkt); text-decoration-thickness: 0.16em; }
+.sl-markdown-content strong { font-weight: 700; }
+.sl-markdown-content :not(pre) > code { border: 1px solid var(--lijn); border-radius: 0.3rem; padding: 0.05em 0.35em; }
+
+/* Kop van een manual */
+.manual-kop { margin-top: 1rem; display: grid; gap: 1rem; }
+.manual-wat { font-size: 1.25rem; line-height: 1.45; max-width: 34ch; color: var(--inkt); }
+.manual-feiten { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem 1.5rem; color: var(--inkt-zacht); font-size: 1rem; }
+.noppen { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--inkt); }
+.noppen-rij { display: inline-flex; gap: 0.2rem; }
+.nop { inline-size: 0.8rem; block-size: 0.8rem; border-radius: 50%; border: 2px solid var(--inkt); box-sizing: border-box; }
+.nop.vol { background: var(--inkt); }
+
+.manual-knoppen { display: flex; flex-wrap: wrap; gap: 0.625rem; }
+.knop {
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--rond);
+  border: 2px solid var(--inkt);
+  background: var(--plaat);
+  color: var(--inkt);
+  text-decoration: none;
+  cursor: pointer;
+  transition: translate 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--schaduw);
+}
+.knop:hover { translate: 0 -2px; }
+.knop:active { translate: 0 1px; box-shadow: none; }
+.knop-vol { background: var(--geel); }
+.manual-downloads { margin: 0; padding-inline-start: 1.2rem; }
+
+/* Kaders */
+.kader {
+  background: var(--plaat);
+  border: 2px solid var(--inkt);
+  border-radius: var(--rond);
+  padding: 1rem 1.25rem 1.125rem;
+  margin-block: 1.5rem;
+}
+.kader > * + * { margin-top: 0.6rem; }
+.kader-titel {
+  font-family: var(--letter-titel);
+  font-stretch: 106%;
+  font-weight: 800;
+  font-size: 1.0625rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--inkt);
+}
+.kader :is(ul, ol) { padding-inline-start: 1.2rem; }
+.kader li + li { margin-top: 0.25rem; }
+.kader-tip { background: var(--geel); }
+.kader-tip a { color: var(--inkt); }
+.kader-test { background: var(--groen-zacht); border-color: var(--groen); }
+.kader-test .kader-titel { color: oklch(0.36 0.11 150); }
+.kader-letop { background: var(--rood-zacht); border-color: var(--rood); }
+.kader-letop .kader-titel { color: oklch(0.42 0.17 27); }
+
+/* Stappen: het cijfer is een plaat. Afgevinkt wordt ze vol. */
+.sl-markdown-content .sl-heading-wrapper:has(> h2.stap) {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 3.25rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--lijn);
+}
+.sl-heading-wrapper:has(> h2.stap) .sl-anchor-link { display: none; }
+h2.stap { display: flex; align-items: center; gap: 0.875rem; margin: 0; }
+h2.stap::before {
+  content: attr(data-stap);
+  flex: none;
+  display: grid;
+  place-items: center;
+  min-inline-size: 3.25rem;
+  block-size: 3.25rem;
+  padding-inline: 0.5rem;
+  box-sizing: border-box;
+  font-size: 2rem;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--inkt);
+  background: var(--plaat);
+  border: 2px solid var(--inkt);
+  border-radius: var(--rond);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+h2.stap.is-klaar::before { background: var(--inkt); color: var(--geel); }
+.stap-klaar {
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 2px solid var(--inkt);
+  background: transparent;
+  color: var(--inkt);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.stap-klaar:hover { background: var(--plaat); }
+.stap-klaar[aria-pressed='true'] { background: var(--inkt); color: var(--geel); }
+@media (prefers-reduced-motion: no-preference) {
+  h2.stap.is-klaar::before { animation: stempel 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+}
+@keyframes stempel {
+  from { scale: 1.25; rotate: -6deg; }
+  to { scale: 1; rotate: 0deg; }
+}
+
+/* Blokjes: een witte plaat, breed genoeg om te scrollen in een smal venster. */
+pre.blocks {
+  background: var(--plaat);
+  border: 1px solid var(--lijn);
+  border-radius: var(--rond);
+  padding: 1rem 1.125rem;
+  margin-block: 1.25rem;
+  overflow-x: auto;
+  font-family: var(--sl-font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--inkt);
+  scrollbar-width: thin;
+}
+pre.blocks.getekend { line-height: 0; }
+pre.blocks svg { display: block; max-width: none; }
+
+/* Coachblok */
+.coach {
+  margin-block: 2.5rem 1rem;
+  border: 2px dashed var(--inkt-zacht);
+  border-radius: var(--rond);
+  background: transparent;
+}
+.coach summary {
+  cursor: pointer;
+  padding: 0.8rem 1.1rem;
+  font-weight: 700;
+  color: var(--inkt);
+}
+.coach summary:hover { background: var(--grond-diep); border-radius: calc(var(--rond) - 2px); }
+.coach-inhoud { padding: 0.25rem 1.1rem 1.1rem; }
+.coach-inhoud > * + * { margin-top: 0.75rem; }
+.coach-status { color: var(--inkt-zacht); font-size: 0.9375rem; }
+
+/* Overzicht van manuals: een lijst, geen rij kaarten. */
+.manual-lijst { list-style: none; padding: 0; margin: 1rem 0 2.5rem; border-top: 2px solid var(--inkt); }
+.manual-lijst li { margin: 0; border-bottom: 1px solid var(--lijn); }
+.manual-lijst a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.15rem 1.5rem;
+  padding: 0.9rem 0.25rem;
+  color: var(--inkt);
+  text-decoration: none;
+}
+.manual-lijst a:hover { background: var(--plaat); }
+.manual-lijst .naam { font-family: var(--letter-titel); font-stretch: 106%; font-weight: 750; font-size: 1.25rem; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.2em; }
+.manual-lijst a:hover .naam { text-decoration-color: var(--inkt); }
+.manual-lijst .duur { color: var(--inkt-zacht); white-space: nowrap; align-self: center; }
+.manual-lijst .wat { grid-column: 1 / -1; color: var(--inkt-zacht); max-width: 60ch; }
+.niveau-kop { display: flex; align-items: center; gap: 0.75rem; }
+
+/* Bron en voet */
+.bron { margin-top: 3rem; padding-top: 1.25rem; border-top: 2px solid var(--lijn); color: var(--inkt-zacht); font-size: 0.9375rem; }
+.site-voet { margin-top: 2rem; color: var(--inkt-zacht); font-size: 0.9375rem; display: grid; gap: 0.25rem; }
+.bron a, .site-voet a { color: var(--blauw-diep); }
+
+/* Print: enkel de manual zelf, zwart op wit. */
+@media print {
+  :root, :root[data-theme='light'] { --grond: #fff; --grond-diep: #fff; --sl-color-bg: #fff; --sl-color-black: #fff; }
+  html, body { background: #fff !important; }
+  header.header, .sidebar-pane, .right-sidebar-container, mobile-starlight-toc,
+  .manual-knoppen, .stap-klaar, .coach, .pagination-links, .site-voet,
+  starlight-menu-button { display: none !important; }
+  .main-frame, .main-pane, .sl-container { padding: 0 !important; margin: 0 !important; max-width: none !important; }
+  body { font-size: 11pt; }
+  h1#_top { font-size: 26pt; }
+  .kader, pre.blocks { break-inside: avoid; box-shadow: none; }
+  .kader-tip { background: #fff; }
+  .sl-heading-wrapper:has(> h2.stap) { break-after: avoid; margin-top: 1.5rem; }
+  a { text-decoration: none; }
+}
+
+/* Smal scherm: de balk "Op deze pagina" hoort bij de grond, niet bij de kop. */
+mobile-starlight-toc nav { background: var(--grond-diep); border-color: var(--lijn); }
+mobile-starlight-toc .display-current { color: var(--inkt); }
+
+.niveau-kop .noppen { font-family: var(--letter-titel); font-weight: 750; gap: 0.75rem; }
+.niveau-kop .nop { inline-size: 1rem; block-size: 1rem; }
+.sl-markdown-content table { display: table; inline-size: 100%; font-variant-numeric: tabular-nums; }
+.sl-markdown-content :is(th, td) { border-color: var(--lijn); }
+.sl-markdown-content tr:nth-child(2n):not(:where(.not-content *)) { background: var(--plaat); }

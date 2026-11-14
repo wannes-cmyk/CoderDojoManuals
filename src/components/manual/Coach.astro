@@ -1,0 +1,19 @@
+---
+// Info voor de coach. Dicht tot iemand erop klikt, zodat de ninja er
+// niet door afgeleid wordt (en de oplossing niet meteen ziet).
+interface Props { titel?: string }
+const { titel = 'Voor de coach' } = Astro.props;
+const { entry } = Astro.locals.starlightRoute;
+---
+<details class="coach">
+  <summary>{titel}</summary>
+  <div class="coach-inhoud">
+    <slot />
+    {entry.data.niveau && !entry.data.nagekeken && (
+      <p class="coach-status">
+        Nog niet nagekeken: deze manual is herwerkt vanuit het origineel, maar nog door niemand
+        van begin tot einde nagebouwd in Scratch 3. Zie je een fout? Meld ze onderaan de pagina.
+      </p>
+    )}
+  </div>
+</details>

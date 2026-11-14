@@ -1,0 +1,154 @@
+---
+title: Eendenjacht
+niveau: gevorderd
+duur: 60 minuten
+watJeMaakt: Een schietkraam. Klik binnen de tijd op zoveel mogelijk vogels.
+concepten: [signalen, klonen, tijd, score, muis volgen]
+sidebar:
+  order: 3
+bron:
+  titel: Fiche eendenjacht
+  url: https://drive.google.com/file/d/1qgHR3kYJRU2z0S4TOOc2cMgC4IFCJqfR/view
+  door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- De sprite **papegaai** (Parrot) uit de bibliotheek. Echte eenden vliegen niet zo mooi.
+- Een muis werkt makkelijker dan een touchpad
+</Nodig>
+
+## Stap 1: Begin je project
+
+Verwijder de kat en geef je project de naam `Eendenjacht`. Kies een achtergrond die bij je spel past.
+
+## Stap 2: Maak score en tijd
+
+Maak bij **Variabelen** twee variabelen: `score` en `tijd`.
+
+## Stap 3: Geef het startsein
+
+Klik op het **speelveld**. Dit script is de scheidsrechter: het zet de score op nul, geeft het startsein en telt af.
+
+Een **signaal** is een boodschap die alle sprites kunnen horen. Klik in het blok **zend signaal** op het pijltje, kies **Nieuw bericht** en typ `Start spel`. Maak ook `Einde spel`.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+maak [tijd v] (30)
+zend signaal [Start spel v]
+herhaal tot <(tijd) = (0)>
+  wacht (1) sec.
+  verander [tijd v] met (-1)
+einde
+zend signaal [Einde spel v]
+```
+
+<Test>Klik op de vlag. Telt de tijd af van 30 naar 0?</Test>
+
+## Stap 4: Teken een vizier
+
+Ga op **Kies een sprite** staan en klik op het **penseel**. Teken een cirkel zonder vulling en zet er een kruis door: één lijn van links naar rechts, één van boven naar onder.
+
+<Tip>Met **Shift** ingedrukt wordt je cirkel rond en je lijn recht.</Tip>
+
+Noem deze sprite `vizier`. Kies bij **Geluiden** het geluid **Pop**.
+
+## Stap 5: Laat het vizier je muis volgen
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+
+wanneer ik signaal [Start spel v] ontvang
+verschijn
+herhaal
+  ga naar (muisaanwijzer v)
+  als <muis ingedrukt?> dan
+    start geluid (Pop v)
+    wacht tot <niet <muis ingedrukt?>>
+  einde
+einde
+
+wanneer ik signaal [Einde spel v] ontvang
+verdwijn
+stop [andere scripts in sprite v]
+```
+
+<Test>Klik op de vlag en beweeg je muis over het speelveld. Volgt het vizier? Hoor je een plop als je klikt?</Test>
+
+## Stap 6: Laat één vogel vliegen
+
+Kies de sprite **papegaai** (Parrot) en maak hem wat kleiner. Hij heeft twee uiterlijken: vleugels omhoog en vleugels omlaag.
+
+Programmeurs zijn een beetje lui. We tekenen geen acht vogels, we laten de computer er acht maken. Zo'n kopie heet een **kloon**.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+
+wanneer ik signaal [Start spel v] ontvang
+herhaal (8)
+  maak een kloon van (mijzelf v)
+einde
+```
+
+## Stap 7: Zeg wat elke kloon doet
+
+Elke kloon kiest een plek en een richting en begint te vliegen. Klik je erop, dan krijg je een punt en vliegt hij ergens anders verder.
+
+```scratch
+wanneer ik als kloon start
+maak draaistijl [links-rechts v]
+ga naar (willekeurige positie v)
+richt naar (willekeurig getal tussen (-180) en (180)) graden
+verschijn
+herhaal
+  neem (5) stappen
+  keer om aan de rand
+  volgend uiterlijk
+  als <<muis ingedrukt?> en <raak ik (muisaanwijzer v)?>> dan
+    verander [score v] met (1)
+    ga naar (willekeurige positie v)
+  einde
+einde
+
+wanneer ik signaal [Einde spel v] ontvang
+verwijder deze kloon
+```
+
+<Test>Speel je spel. Vliegen er acht vogels? Gaat je score omhoog als je er een raakt?</Test>
+
+## Stap 8: Game over
+
+Teken een nieuwe sprite met de tekst **Game over**. Gebruik de **T** in het tekenscherm.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+
+wanneer ik signaal [Einde spel v] ontvang
+ga naar x: (0) y: (0)
+verschijn
+```
+
+<LetOp>Bewaar je project.</LetOp>
+
+## Uitdagingen
+
+- Kan je het script van de vogel lezen en uitleggen wat elk blok doet? Code van iemand anders begrijpen is even belangrijk als zelf code schrijven.
+- Laat de vogels sneller vliegen naarmate de tijd opraakt.
+- Voeg een tweede soort vogel toe die meer punten waard is.
+- Laat de vogel een gekke bek trekken als hij geraakt wordt: teken een extra uiterlijk.
+- Neem je eigen geluid op met de microfoon.
+
+<Coach>
+Dit is een stevige: signalen en klonen in één project. Laat de ninja na stap 3 en na stap 6 goed testen voor hij verder gaat.
+
+Verschil met het origineel: daar werden de vogels eerst zeven keer gekopieerd en pas op het einde vervangen door klonen. Hier beginnen we meteen met klonen. De manual [Attack of the clones](/scratch/expert/attack-of-the-clones/) legt het verschil uitgebreid uit.
+
+Het origineel liet een "game over"-prentje van Google halen. Dat is vervangen door zelf tekenen, om auteursrechten te respecteren.
+
+De treffer wordt bij de vogel gecontroleerd en niet met **wanneer op deze sprite wordt geklikt**, omdat het vizier boven de vogel ligt en de klik anders opvangt.
+</Coach>

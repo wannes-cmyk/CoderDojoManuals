@@ -1,0 +1,143 @@
+---
+title: Pingpong
+niveau: beginner
+duur: 40 minuten
+watJeMaakt: Een pingpongspel voor één speler. Hou de bal in de lucht en scoor punten.
+concepten: [tekenen, raken, kleur raken, score, willekeurig]
+sidebar:
+  order: 5
+bron:
+  titel: Pingpong
+  url: https://drive.google.com/file/d/1KRjsMvWdt7KEo0OceZYgH-8s7huowkgq/view
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- De sprites **Ball** (bal) en **Paddle** (palet) uit de bibliotheek
+</Nodig>
+
+## Stap 1: Haal je spullen
+
+Verwijder de kat. Klik op **Kies een sprite** en zoek de **bal** (Ball). Doe dat nog eens voor het **palet** (Paddle).
+
+Maak de bal kleiner: klik op de bal en zet **Grootte** op 50.
+
+## Stap 2: Teken een rode muur
+
+Onder het palet komt een rode muur. Raakt de bal die, dan verlies je een punt.
+
+1. Klik onderaan rechts op het **speelveld** en dan bovenaan op het tabblad **Achtergronden**.
+2. Kies de **lijn**.
+3. Kies **rood** bij **Omlijning** en maak de lijn dik.
+4. Trek een lijn helemaal onderaan het veld.
+
+<Tip>Hou **Shift** ingedrukt, dan wordt je lijn kaarsrecht.</Tip>
+
+Sleep het palet naar onder, net boven de muur.
+
+## Stap 3: Laat het palet bewegen
+
+Klik op het **palet** en bouw deze twee scripts:
+
+```scratch
+wanneer [pijltje rechts v] is ingedrukt
+verander x met (10)
+
+wanneer [pijltje links v] is ingedrukt
+verander x met (-10)
+```
+
+Naar rechts is 10. Naar links is dus min 10.
+
+<Test>Druk op de pijltjes. Schuift het palet heen en weer?</Test>
+
+## Stap 4: Laat de bal botsen
+
+Klik op de **bal**. De bal start bovenaan, vliegt schuin weg en keert om aan de rand.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+ga naar x: (0) y: (150)
+richt naar (135) graden
+herhaal
+  neem (8) stappen
+  keer om aan de rand
+einde
+```
+
+<Test>Klik op de vlag. Stuitert de bal rond? Hij vliegt nu nog door je palet heen. Dat lossen we op.</Test>
+
+## Stap 5: Sla op de bal
+
+Maak eerst een variabele `score` (bij **Variabelen**). Kies bij **Geluiden** het geluid **Boing**.
+
+Zet dan dit **als**-blok in je **herhaal**, onder **keer om aan de rand**:
+
+```scratch
+als <raak ik (Paddle v)?> dan
+  start geluid (Boing v)
+  verander [score v] met (1)
+  richt naar (willekeurig getal tussen (-60) en (60)) graden
+  neem (15) stappen
+einde
+```
+
+De bal krijgt een willekeurige richting naar boven. Zo weet je nooit waar hij heen gaat.
+
+## Stap 6: Mis je, dan min één
+
+Zet nog een **als**-blok in je **herhaal**. Klik in het blok op het kleurvakje en dan op de **pipet**. Klik daarmee op je rode muur. Zo heb je precies de juiste kleur.
+
+```scratch
+als <raak ik kleur [#ff0000]?> dan
+  verander [score v] met (-1)
+  ga naar x: (willekeurig getal tussen (-200) en (200)) y: (150)
+einde
+```
+
+## Stap 7: Begin op nul
+
+Zet helemaal bovenaan, net onder de vlag, dit blok:
+
+```scratch
+maak [score v] (0)
+```
+
+Zo ziet het hele script van de bal er nu uit:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+ga naar x: (0) y: (150)
+richt naar (135) graden
+herhaal
+  neem (8) stappen
+  keer om aan de rand
+  als <raak ik (Paddle v)?> dan
+    start geluid (Boing v)
+    verander [score v] met (1)
+    richt naar (willekeurig getal tussen (-60) en (60)) graden
+    neem (15) stappen
+  einde
+  als <raak ik kleur [#ff0000]?> dan
+    verander [score v] met (-1)
+    ga naar x: (willekeurig getal tussen (-200) en (200)) y: (150)
+  einde
+einde
+```
+
+<Test>Speel je spel. Krijg je een punt als je de bal raakt? Verlies je er een als je mist?</Test>
+
+## Uitdagingen
+
+- Laat het palet de muis volgen in plaats van de pijltjes.
+- Maak de bal sneller na elke tien punten.
+- Stop het spel als je score onder nul zakt.
+- Maak er een spel voor twee van, met een palet bovenaan en een onderaan.
+
+<Coach>
+De manual bouwt het script van de bal op in drie stukken en toont het daarna in één keer. Loopt een ninja vast, laat hem dan vergelijken met het volledige script in stap 7.
+
+Typische fout: het **als**-blok staat buiten **herhaal** en wordt dus maar één keer gecontroleerd.
+</Coach>

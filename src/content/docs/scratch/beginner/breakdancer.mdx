@@ -1,0 +1,94 @@
+---
+title: Breakdancer
+niveau: beginner
+duur: 25 minuten
+watJeMaakt: Een danser die beweegt op muziek. Zet je geluid aan.
+concepten: [uiterlijken, geluid, herhalen, wachten]
+sidebar:
+  order: 3
+bron:
+  titel: Fiche breakdancer
+  url: https://drive.google.com/file/d/17jcUitU-bMMRD7MK9So-V9Nlg5mzdDU6/view
+  door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- Geluid: boxen of een koptelefoon
+</Nodig>
+
+## Stap 1: Kies je danser
+
+Verwijder de kat. Klik dan op **Kies een sprite** en kies bovenaan de groep **Dansen**. Neem de danser die jij het coolst vindt.
+
+## Stap 2: Laat de danser bewegen
+
+Bouw dit script. De danser stapt naar rechts, wacht even en stapt terug.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+herhaal
+  neem (20) stappen
+  wacht (0.3) sec.
+  neem (-20) stappen
+  wacht (0.3) sec.
+einde
+```
+
+<Test>Klik op de groene vlag. Wiebelt je danser heen en weer?</Test>
+
+## Stap 3: Ontdek de uiterlijken
+
+Klik bovenaan op het tabblad **Uiterlijken**. Je danser heeft meerdere houdingen. Klik er een paar aan. Hoeveel tel je er?
+
+Ga terug naar **Code** en zet tussen elke stap een blok **volgend uiterlijk**:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+herhaal
+  neem (20) stappen
+  volgend uiterlijk
+  wacht (0.3) sec.
+  neem (-20) stappen
+  volgend uiterlijk
+  wacht (0.3) sec.
+einde
+```
+
+<Tip>Klik met je rechtermuisknop op een blok en kies **Dupliceren**. Zo hoef je niet alles opnieuw te slepen.</Tip>
+
+## Stap 4: Zet muziek op
+
+Klik op het tabblad **Geluiden** en dan onderaan op **Kies een geluid**. Kijk in de groep **Loops** en kies een ritme.
+
+Bouw er een tweede script bij. Het speelt de muziek telkens opnieuw.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+herhaal
+  start geluid (Dance Celebrate v) en wacht
+einde
+```
+
+In het blokje kies je het geluid dat jij genomen hebt.
+
+<Test>Klik op de vlag. Danst je danser op de muziek?</Test>
+
+## Stap 5: Bouw een podium
+
+Klik onderaan rechts op **Kies een achtergrond**. Zoek een podium of een dansvloer. De achtergrond **Spotlight** past er goed bij.
+
+<LetOp>Bewaar je project: **Bestand**, dan **Opslaan op je computer**.</LetOp>
+
+## Uitdagingen
+
+- Verander de wachttijd. Wat gebeurt er bij 0.1? En bij 1?
+- Voeg een tweede danser toe die net iets anders beweegt.
+- Laat de danser groter en kleiner worden op het ritme.
+
+<Coach>
+Twee scripts onder dezelfde vlag lopen tegelijk. Dat is voor veel kinderen nieuw: laat hen het muziekscript even losmaken om het verschil te horen.
+
+De namen van sprites en geluiden kunnen in jouw versie van Scratch anders zijn. Elke danser en elke loop werkt.
+</Coach>

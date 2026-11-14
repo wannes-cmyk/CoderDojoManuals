@@ -1,0 +1,33 @@
+---
+// Lijst van alle manuals in een map, gegroepeerd per niveau.
+// Komt er een manual bij, dan staat hij hier vanzelf tussen.
+import { getCollection } from 'astro:content';
+import Noppen from './Noppen.astro';
+
+interface Props { map: string }
+const { map } = Astro.props;
+
+const alle = (await getCollection('docs')).filter((e) => e.id.startsWith(`${map}/`) && e.data.niveau);
+const niveaus = ['beginner', 'gevorderd', 'expert'] as const;
+const orde = (e: (typeof alle)[number]) => e.data.sidebar?.order ?? 99;
+---
+{niveaus.map((niveau) => {
+  const lijst = alle.filter((e) => e.data.niveau === niveau).sort((a, b) => orde(a) - orde(b));
+  if (lijst.length === 0) return null;
+  return (
+    <section>
+      <h2 class="niveau-kop" id={niveau}><Noppen niveau={niveau} /></h2>
+      <ul class="manual-lijst">
+        {lijst.map((e) => (
+          <li>
+            <a href={`/${e.id}/`}>
+              <span class="naam">{e.data.title}</span>
+              <span class="duur">{e.data.duur}</span>
+              <span class="wat">{e.data.watJeMaakt}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+})}

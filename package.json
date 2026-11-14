@@ -1,0 +1,23 @@
+{
+  "name": "cdjmanuals",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open source handleidingen voor CoderDojo-ninja's, te beginnen met Scratch.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "node scripts/check-blokjes.mjs",
+    "test": "node scripts/check-blokjes.mjs && astro build"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.9",
+    "@astrojs/starlight": "^0.43.1",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/andika": "^5.3.0",
+    "astro": "^7.4.12",
+    "scratchblocks": "^3.7.1",
+    "sharp": "^0.35.5"
+  }
+}

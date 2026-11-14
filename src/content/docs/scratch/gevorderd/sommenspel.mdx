@@ -1,0 +1,144 @@
+---
+title: Sommenspel
+niveau: gevorderd
+duur: 45 minuten
+watJeMaakt: Een quiz waarin de kat sommen verzint en jouw antwoord nakijkt. Daarna bouw je hem om naar min, maal en delen.
+concepten: [variabelen, vragen en antwoorden, willekeurig, als-anders, rekenen]
+sidebar:
+  order: 2
+bron:
+  titel: Sommenspel
+  url: https://drive.google.com/file/d/1Nd0mFFDTstMmdPGWo10wQYtPNH0PEJOE/view
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- Enkel de kat
+</Nodig>
+
+## Stap 1: De kat vraagt een som
+
+Het blok **vraag ... en wacht** vind je bij **Waarnemen**. Wat je typt, komt in het blokje **antwoord**.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+vraag [2 + 3 = ?] en wacht
+als <(antwoord) = [5]> dan
+  zeg [Juist!] (2) sec.
+anders
+  zeg [Jammer...] (2) sec.
+einde
+```
+
+<Test>Klik op de vlag. Typ je antwoord en druk op Enter. Geef ook eens een fout antwoord.</Test>
+
+## Stap 2: De kat verzint zelf een som
+
+Altijd dezelfde som is saai. Maak bij **Variabelen** drie variabelen: `getal1`, `getal2` en `som`.
+
+De kat kiest twee willekeurige getallen en rekent zelf de som uit. Met **voeg ... en ... samen** (bij **Functies**) plak je stukjes tekst aan elkaar tot een vraag.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [getal1 v] (willekeurig getal tussen (1) en (10))
+maak [getal2 v] (willekeurig getal tussen (1) en (10))
+maak [som v] ((getal1) + (getal2))
+vraag (voeg (voeg (getal1) en [ + ] samen) en (voeg (getal2) en [ = ?] samen) samen) en wacht
+als <(antwoord) = (som)> dan
+  zeg [Juist!] (2) sec.
+anders
+  zeg (voeg [Jammer, het was ] en (som) samen) (2) sec.
+einde
+```
+
+<Test>Klik een paar keer op de vlag. Krijg je telkens een andere som?</Test>
+
+<LetOp>Bewaar je project. Je hebt het straks nog nodig.</LetOp>
+
+## Stap 3: Tien sommen na elkaar
+
+Zet alles onder de vlag in een blok **herhaal 10**.
+
+## Stap 4: Hou de score bij
+
+Maak een variabele `score`. Ze begint op 0 en gaat met 1 omhoog bij elk juist antwoord. Op het einde zegt de kat je score.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+herhaal (10)
+  maak [getal1 v] (willekeurig getal tussen (1) en (10))
+  maak [getal2 v] (willekeurig getal tussen (1) en (10))
+  maak [som v] ((getal1) + (getal2))
+  vraag (voeg (voeg (getal1) en [ + ] samen) en (voeg (getal2) en [ = ?] samen) samen) en wacht
+  als <(antwoord) = (som)> dan
+    zeg [Juist!] (1) sec.
+    verander [score v] met (1)
+  anders
+    zeg (voeg [Jammer, het was ] en (som) samen) (2) sec.
+  einde
+einde
+zeg (voeg [Je score is ] en (score) samen)
+```
+
+<Test>Speel een hele ronde. Klopt je score?</Test>
+
+## Stap 5: Maak er minsommen van
+
+Bewaar eerst een kopie: **Bestand**, **Opslaan als kopie**. Noem ze `minspel`.
+
+Bij aftrekken moet het eerste getal het grootste zijn. Anders krijg je 5 min 8, en dat lukt nog niet. De truc: laat getal2 nooit groter worden dan getal1.
+
+```scratch
+maak [getal1 v] (willekeurig getal tussen (1) en (20))
+maak [getal2 v] (willekeurig getal tussen (1) en (getal1))
+maak [verschil v] ((getal1) - (getal2))
+```
+
+Vervang overal `som` door `verschil` en het plusteken door een minteken.
+
+## Stap 6: Maak er maaltafels van
+
+Vertrek opnieuw van je plusspel en bewaar een kopie als `tafels`. Maak de variabelen `tafel` en `product`.
+
+Voor het spel begint, vraagt de kat welke tafel je wil oefenen. Dat blok staat dus boven **herhaal**.
+
+```scratch
+vraag [Welke tafel wil je oefenen?] en wacht
+maak [tafel v] (antwoord)
+```
+
+In de lus wordt het dan:
+
+```scratch
+maak [getal1 v] (willekeurig getal tussen (1) en (10))
+maak [product v] ((getal1) * (tafel))
+```
+
+In Scratch is het sterretje het maalteken.
+
+## Stap 7: Maak er deeltafels van
+
+Delen is maal in omgekeerde richting. Reken eerst het product uit en laat de kat dat getal delen.
+
+```scratch
+maak [quotiënt v] (willekeurig getal tussen (1) en (10))
+maak [getal1 v] ((quotiënt) * (tafel))
+vraag (voeg (voeg (getal1) en [ : ] samen) en (voeg (tafel) en [ = ?] samen) samen) en wacht
+```
+
+Het juiste antwoord is nu `quotiënt`.
+
+## Uitdagingen
+
+- Speel een geluid bij een juist en bij een fout antwoord. Neem er zelf een op.
+- Laat de score aftellen: begin op 10 en ga door tot je op 0 staat. Gebruik **herhaal tot**.
+- Zeg op het einde "Jij bent een tafelkampioen!" als alles juist was.
+- Geef een kleuter-versie (tot 5) en een expert-versie (tot 100).
+
+<Coach>
+Dit is de manual waar variabelen echt klikken. Het lastigste blok is de dubbele **voeg samen**: laat de ninja het van binnen naar buiten opbouwen, en eerst los uittesten door erop te klikken.
+
+In stap 7 is de volgorde omgekeerd: eerst het antwoord kiezen, dan de opgave berekenen. Zo komt een deling altijd mooi uit. Dat is een mooi gesprek waard.
+</Coach>
