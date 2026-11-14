@@ -1,0 +1,193 @@
+---
+title: Pssst! Geheimpje!
+niveau: expert
+duur: 75 minuten
+watJeMaakt: Een programma dat berichten onleesbaar maakt voor alle curieuzeneuzemosterdpotten.
+concepten: [versleutelen, tekst letter per letter, eigen blokken, tellers]
+sidebar:
+  order: 2
+scratchProject: https://scratch.mit.edu/projects/88418014
+bron:
+  titel: Pssst! Geheimpje!
+  url: https://docs.google.com/document/d/1YswAiud_RGzSoPSQE1DcjXEtAReqOJS-3FMFr-ttI7s/edit
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+Je pa die stiekem je berichtjes leest. Je juf die briefjes onderschept. Verschrikkelijk vervelend. Gelukkig ben jij al een echte programmeur.
+
+<Nodig>
+- Scratch, open in je browser
+- De kat
+- Pen en papier om je geheime sleutel te bedenken
+</Nodig>
+
+## Het principe
+
+Anne wil met Brent afspreken. Maar meester Charel is heel goed in briefjes onderscheppen. Dus maakt Anne haar briefje eerst onleesbaar. Dat heet **versleutelen**.
+
+| | |
+| --- | --- |
+| Bericht | afspraak om twee uur op het pleintje! |
+| Versleuteld | nwiqonnh sf urxx yyo sq lxu qgxkdujx! |
+
+Brent kent de methode en zet het bericht weer om. Dat heet **ontsleutelen**. Meester Charel kent de methode niet en snapt er geen jota van.
+
+<Tip titel="Moeilijke woorden om mee te stoefen op familiefeestjes">
+**Versleutelen** heet ook vercijferen, encrypteren of encoderen. **Ontsleutelen** heet ook ontcijferen, decrypteren of decoderen.
+</Tip>
+
+Anne gebruikt een heel oude methode: ze vervangt elke letter door een andere. Welke letter welke wordt, staat in haar **geheime sleutel**:
+
+| Letter | a | b | c | d | e | f | g | h | i | j | k | l | m |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Wordt | n | b | v | c | x | w | m | l | k | j | h | g | f |
+
+| Letter | n | o | p | q | r | s | t | u | v | w | x | y | z |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Wordt | d | s | q | p | o | i | u | y | t | r | e | z | a |
+
+Het is superbelangrijk dat Anne en Brent die sleutel vooraf afspreken. Het is hun **gedeeld geheim**.
+
+## Stap 1: First things first
+
+Geheime berichten zijn iets voor geheime agenten. Klik op het tabblad **Uiterlijken** en geef je kat een ultracoole look: zonnebril, hoed, lange jas.
+
+## Stap 2: Vraag een bericht
+
+Maak een variabele `invoer`. De kat vraagt een bericht en bewaart het.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+vraag [Welk bericht wil je versleutelen?] en wacht
+maak [invoer v] (antwoord)
+```
+
+## Stap 3: Maak het blok dat omzet
+
+Maak een variabele `resultaat`. Daarin komt straks het geheime bericht.
+
+Maak bij **Mijn blokken** een blok `zet invoer om`. Voorlopig doet het bijna niets: het maakt het resultaat gelijk aan de invoer.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+vraag [Welk bericht wil je versleutelen?] en wacht
+maak [invoer v] (antwoord)
+zet invoer om :: custom
+zeg (resultaat)
+
+definieer zet invoer om
+maak [resultaat v] (invoer)
+```
+
+<Test>Klik op de vlag en typ iets. De kat zegt gewoon terug wat je typte. Zo'n geheim kraakt meester Charel nog makkelijk.</Test>
+
+## Stap 4: Loop letter per letter door het bericht
+
+Nu het echte werk. Maak drie variabelen: `i`, `letter` en `letter omgezet`.
+
+- `i` is een teller. Hij begint op 1 en wijst telkens de volgende letter aan.
+- Met **letter ... van ...** (bij **Functies**) haal je één letter uit de invoer.
+- Met **voeg ... en ... samen** plak je de omgezette letter achter het resultaat.
+
+```scratch
+definieer zet invoer om
+maak [resultaat v] []
+maak [i v] (1)
+herhaal (lengte van (invoer) :: operators)
+  maak [letter v] (letter (i) van (invoer) :: operators)
+  zet letter om :: custom
+  maak [resultaat v] (voeg (resultaat) en (letter omgezet) samen)
+  verander [i v] met (1)
+einde
+```
+
+Het vakje achter `maak resultaat` is leeg. Wis wat erin staat.
+
+## Stap 5: Zet één letter om
+
+Het blok `zet letter om` moet je nog maken. Begin eenvoudig: een a wordt een e, een e wordt een a. Alle andere letters blijven wat ze zijn.
+
+```scratch
+definieer zet letter om
+maak [letter omgezet v] (letter)
+als <(letter) = [a]> dan
+  maak [letter omgezet v] [e]
+einde
+als <(letter) = [e]> dan
+  maak [letter omgezet v] [a]
+einde
+```
+
+<Test>Klik op de vlag en typ "een aap eet graag". Wat zegt de kat?</Test>
+
+<Tip titel="Scratch-tip">
+Scratch maakt geen verschil tussen hoofdletters en kleine letters. Voor Scratch is een a hetzelfde als een A. Dat is niet in alle programmeertalen zo: JavaScript is wel **hoofdlettergevoelig**. Meesters en juffen meestal ook.
+</Tip>
+
+## Stap 6: Gebruik de hele sleutel
+
+Voor elke letter een **als**-blok bouwen? Dat zijn er 26. Het kan slimmer.
+
+Maak twee variabelen: `alfabet` en `sleutel`. Zet ze onder de vlag, helemaal bovenaan:
+
+```scratch
+maak [alfabet v] [abcdefghijklmnopqrstuvwxyz]
+maak [sleutel v] [nbvcxwmlkjhgfdsqpoiuytreza]
+```
+
+Dat is de sleutel van Anne. Tel maar na: de eerste letter van het alfabet is a, de eerste van de sleutel is n. Dus a wordt n.
+
+Maak nog een variabele `plaats` en bouw `zet letter om` opnieuw:
+
+```scratch
+definieer zet letter om
+maak [letter omgezet v] (letter)
+maak [plaats v] (1)
+herhaal (26)
+  als <(letter (plaats) van (alfabet) :: operators) = (letter)> dan
+    maak [letter omgezet v] (letter (plaats) van (sleutel) :: operators)
+  einde
+  verander [plaats v] met (1)
+einde
+```
+
+Begrijp je wat hier gebeurt? Het blok zoekt de letter op in het alfabet. Staat ze op plaats 5, dan neemt het de letter op plaats 5 van de sleutel.
+
+<Test>Typ "afspraak om twee uur op het pleintje". Krijg je hetzelfde als Anne?</Test>
+
+## Stap 7: Umdrehen
+
+Een geheim bericht dat je ontvangt, wil je ook weer kunnen lezen. Je mag zelf verzinnen hoe.
+
+Een hint: wat gebeurt er als je `alfabet` en `sleutel` van plaats wisselt?
+
+## Opgepast voor valsspelers
+
+Stel dat meester Charel doorheeft dat Anne gewoon letters vervangt. Kan hij het bericht kraken zonder de sleutel?
+
+Hoeveel sleutels bestaan er? Voor de a kan je kiezen uit 26 letters. Voor de b blijven er 25 over. Voor de c nog 24. Het aantal mogelijke sleutels is dus 26 x 25 x 24 x ... x 2 x 1. Dat is 403 291 461 126 605 635 584 000 000. Redelijk veel.
+
+<Tip titel="Wiskundeweetje">
+26 x 25 x 24 x ... x 1 heet **de faculteit van 26**. Je schrijft het als 26!
+</Tip>
+
+Alle sleutels proberen lukt dus niet, zelfs niet met een supersnelle computer. Maar er is een slimmere manier. Sommige letters komen in het Nederlands veel vaker voor dan andere. De e is de koploper, de q hangt helemaal achteraan. Wie genoeg geheime berichten onderschept en telt hoe vaak elk teken voorkomt, kan de sleutel raden.
+
+Daarom is letters vervangen niet veilig genoeg voor superbelangrijke berichten. Voor briefjes in de klas blijft het een aanrader.
+
+## Uitdagingen
+
+- Bedenk je eigen sleutel en wissel berichten uit met een andere ninja.
+- Laat de kat eerst vragen: versleutelen of ontsleutelen?
+- Laat ook cijfers en leestekens omzetten.
+- Tel hoe vaak elke letter voorkomt in een lang bericht. Kan je zo de sleutel van iemand anders kraken?
+
+<Coach>
+Stap 4 is de moeilijkste: een teller die door een tekst loopt. Laat de ninja de variabelen `i` en `letter` zichtbaar zetten op het speelveld en het script traag zien lopen.
+
+Het origineel toonde stap 6 als open vraag ("begrijp je wat deze blokjes doen?") en liet ook een oplossing met lijsten toe. Die variant met lijsten is een mooie extra voor wie snel klaar is.
+
+Het voorbeeldproject bovenaan is de link uit het origineel. Kijk na of het nog bestaat en of het ondertussen Scratch 3 is.
+
+De cijfers over letterfrequentie uit het origineel (18,91% voor de e) zijn hier weggelaten omdat de bron niet te controleren was.
+</Coach>

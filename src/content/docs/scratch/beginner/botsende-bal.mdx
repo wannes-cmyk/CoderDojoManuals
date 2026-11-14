@@ -1,0 +1,62 @@
+---
+title: Botsende bal
+niveau: beginner
+duur: 15 minuten
+watJeMaakt: Een bal die over het scherm stuitert en aan elke rand omkeert. Een goed begin.
+concepten: [tekenen, herhalen, bewegen]
+sidebar:
+  order: 2
+bron:
+  titel: Fiche botsende bal
+  url: https://drive.google.com/file/d/1F-ywQna5kMLhN-M_CH0ppdMVGxu78tlG/view
+  door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
+---
+import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+
+<Nodig>
+- Scratch, open in je browser
+- Verder niets
+</Nodig>
+
+## Stap 1: Stuur de kat weg
+
+Begin een nieuw project. Klik onderaan rechts op de kat en dan op het **kruisje** in de hoek. Weg kat.
+
+## Stap 2: Teken een bal
+
+Ga met je muis op de knop **Kies een sprite** staan (onderaan rechts) en klik op het **penseel**. Nu teken je zelf een sprite.
+
+1. Kies de **cirkel**.
+2. Kies een kleur bij **Vullen**.
+3. Teken een kleine bol in het midden van het blad.
+
+<Tip>Hou **Shift** ingedrukt terwijl je tekent. Dan blijft je bal mooi rond.</Tip>
+
+## Stap 3: Laat de bal botsen
+
+Klik bovenaan op het tabblad **Code** en bouw dit script:
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+richt naar (45) graden
+herhaal
+  neem (10) stappen
+  keer om aan de rand
+einde
+```
+
+<Test>
+Klik op de groene vlag. Stuitert de bal alle kanten op?
+</Test>
+
+## Uitdagingen
+
+- Maak de bal sneller. Welk getal moet je veranderen?
+- Laat de bal van kleur veranderen terwijl hij vliegt. Kijk eens bij **Uiterlijken** naar het blok met **kleur effect**.
+- Teken een tweede bal en geef hem een ander script. Botsen ze tegen elkaar?
+
+<Coach>
+Kernidee: een lus. Zonder **herhaal** beweegt de bal één keer en stopt hij.
+
+Vraag om te stellen: wat gebeurt er als je **keer om aan de rand** weghaalt?
+</Coach>

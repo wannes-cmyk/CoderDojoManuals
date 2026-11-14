@@ -1,0 +1,30 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import Noppen from './Noppen.astro';
+
+const { entry } = Astro.locals.starlightRoute;
+const d = entry.data;
+---
+<Default />
+{d.niveau && (
+  <div class="manual-kop">
+    {d.watJeMaakt && <p class="manual-wat">{d.watJeMaakt}</p>}
+    <ul class="manual-feiten">
+      <li><Noppen niveau={d.niveau} /></li>
+      {d.duur && <li>{d.duur}</li>}
+      {d.concepten.length > 0 && <li>Je leert: {d.concepten.join(', ')}</li>}
+    </ul>
+    <div class="manual-knoppen">
+      <a class="knop knop-vol" href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener">Open Scratch</a>
+      {d.scratchProject && (
+        <a class="knop" href={d.scratchProject} target="_blank" rel="noopener">Bekijk het voorbeeld</a>
+      )}
+      <button class="knop" type="button" data-print>Print dit</button>
+    </div>
+    {d.downloads.length > 0 && (
+      <ul class="manual-downloads">
+        {d.downloads.map((b) => <li><a href={b.url}>{b.label}</a></li>)}
+      </ul>
+    )}
+  </div>
+)}

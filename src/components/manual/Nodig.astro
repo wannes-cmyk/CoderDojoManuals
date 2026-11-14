@@ -1,0 +1,9 @@
+---
+// "Dit heb je nodig": het onderdelenkader bovenaan een manual.
+interface Props { titel?: string }
+const { titel = 'Dit heb je nodig' } = Astro.props;
+---
+<aside class="kader kader-nodig" aria-label={titel}>
+  <p class="kader-titel">{titel}</p>
+  <slot />
+</aside>

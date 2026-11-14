@@ -1,0 +1,14 @@
+---
+// Niveau als noppen, zoals de moeilijkheid op een bouwdoos. Geen kleurcode,
+// zodat het ook in zwart-wit print en voor kleurenblinde lezers werkt.
+interface Props { niveau: 'beginner' | 'gevorderd' | 'expert' }
+const { niveau } = Astro.props;
+const aantal = { beginner: 1, gevorderd: 2, expert: 3 }[niveau];
+const naam = { beginner: 'Beginner', gevorderd: 'Gevorderd', expert: 'Expert' }[niveau];
+---
+<span class="noppen">
+  <span class="noppen-rij" aria-hidden="true">
+    {[1, 2, 3].map((n) => <span class:list={['nop', { vol: n <= aantal }]} />)}
+  </span>
+  <span>{naam}</span>
+</span>

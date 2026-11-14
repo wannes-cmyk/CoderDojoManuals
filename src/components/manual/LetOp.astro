@@ -1,0 +1,8 @@
+---
+interface Props { titel?: string }
+const { titel = 'Let op' } = Astro.props;
+---
+<aside class="kader kader-letop" aria-label={titel}>
+  <p class="kader-titel">{titel}</p>
+  <slot />
+</aside>

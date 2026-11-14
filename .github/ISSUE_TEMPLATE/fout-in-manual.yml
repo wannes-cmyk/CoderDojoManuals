@@ -1,0 +1,26 @@
+name: Fout in een manual
+description: Een blokje klopt niet, een stap werkt niet of iets is onduidelijk
+title: "Fout: "
+labels: ["manual", "fout"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Vul geen namen of persoonlijke gegevens van kinderen in.
+  - type: input
+    id: manual
+    attributes:
+      label: Over welke manual gaat het?
+    validations:
+      required: true
+  - type: input
+    id: stap
+    attributes:
+      label: Bij welke stap?
+  - type: textarea
+    id: wat
+    attributes:
+      label: Wat loopt er fout?
+      description: Wat staat er, en wat gebeurt er in Scratch?
+    validations:
+      required: true

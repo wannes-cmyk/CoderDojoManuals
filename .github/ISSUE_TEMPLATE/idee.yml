@@ -1,0 +1,19 @@
+name: Idee of nieuwe oefening
+description: Een oefening die erbij moet, of een wens voor de site
+title: "Idee: "
+labels: ["idee"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Vul geen namen of persoonlijke gegevens van kinderen in.
+  - type: textarea
+    id: wens
+    attributes:
+      label: Wat zou je graag willen?
+    validations:
+      required: true
+  - type: input
+    id: bron
+    attributes:
+      label: Link naar het origineel, als het om een bestaande oefening gaat
