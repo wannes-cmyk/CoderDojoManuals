@@ -15,6 +15,7 @@ Elke manual heeft:
 - genummerde stappen die je kan afvinken, zodat je je plek terugvindt als je uit Scratch terugkomt
 - blokjes als tekening, geen screenshots
 - testmomenten en uitdagingen
+- een volledige oplossing, per sprite en per speelveld apart dichtgeklapt, om je eigen code mee te vergelijken
 - een dichtgeklapt blok voor de coach
 - een printversie
 - een link naar het origineel
@@ -58,7 +59,7 @@ Lees `docs/nieuwe-manual.md` en vertrek van `docs/sjabloon.mdx`. Een manual is Ã
 | Pad | Wat |
 | --- | --- |
 | `src/content/docs/` | De manuals en pagina's |
-| `src/components/` | Infobalk, kaders, coachblok, manuallijst |
+| `src/components/` | Infobalk, kaders, oplossing, coachblok, manuallijst |
 | `src/plugins/` | Zet `scratch`-codeblokken en `## Stap 1:`-koppen om |
 | `src/scripts/pagina.ts` | Blokjes tekenen, stappen afvinken, printen |
 | `src/styles/custom.css` | Het uitzicht |

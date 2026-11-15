@@ -10,7 +10,7 @@ bron:
   titel: Red de prinses (doolhof)
   url: https://drive.google.com/file/d/1DrJT76VpRwUFFMg90SXxZl9_d8CT4IlQ/view
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -114,6 +114,69 @@ einde
 ```
 
 <Test>Speel je spel van begin tot einde. Kan je winnen? Kan je verliezen?</Test>
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Kat">
+Twee scripts. Het eerste laat de kat lopen. Het tweede let op muren, de prinses en de haai. Zet je de prinses en de haai in het eerste **herhaal**, dan werkt het ook.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+herhaal
+  als <toets (pijltje rechts v) ingedrukt?> dan
+    verander x met (3)
+  einde
+  als <toets (pijltje links v) ingedrukt?> dan
+    verander x met (-3)
+  einde
+  als <toets (pijltje omhoog v) ingedrukt?> dan
+    verander y met (3)
+  einde
+  als <toets (pijltje omlaag v) ingedrukt?> dan
+    verander y met (-3)
+  einde
+einde
+
+wanneer op @greenFlag wordt geklikt
+ga naar x: (-200) y: (-140)
+herhaal
+  als <raak ik kleur [#ff0000]?> dan
+    ga naar x: (-200) y: (-140)
+  einde
+  als <raak ik (Princess v)?> dan
+    zeg [Gewonnen!] (2) sec.
+    stop [alle v]
+  einde
+  als <raak ik (Shark v)?> dan
+    zeg [Verloren...] (2) sec.
+    stop [alle v]
+  einde
+einde
+```
+
+De x en y van de start zijn die van jouw doolhof. Ze moeten twee keer hetzelfde zijn.
+</Oplossing>
+
+<Oplossing naam="Prinses (Princess)">
+Geen code nodig. Ze staat gewoon te wachten in de hoek links bovenaan.
+</Oplossing>
+
+<Oplossing naam="Haai (Shark)">
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak draaistijl [links-rechts v]
+herhaal
+  neem (4) stappen
+  keer om aan de rand
+einde
+```
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig. Wel een tekening: de rode muren van je doolhof, met een open stuk in het midden voor de haai.
+</Oplossing>
 
 ## Uitdagingen
 

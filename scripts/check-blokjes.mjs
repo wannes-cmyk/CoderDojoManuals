@@ -66,6 +66,7 @@ for (const bestand of bestanden) {
   if (!tekst.includes("from '~/components/manual'")) meld('import van de manual-onderdelen ontbreekt');
   if (!tekst.includes('<Nodig')) meld('kader "Dit heb je nodig" ontbreekt');
   if (!tekst.includes('<Coach')) meld('coachblok ontbreekt');
+  if (!tekst.includes('<Oplossing')) meld('oplossing ontbreekt (minstens één <Oplossing>)');
 
   // Stappen moeten netjes 1, 2, 3... tellen.
   const stappen = [...tekst.matchAll(/^## Stap (\d+)[:.]/gm)].map((m) => Number(m[1]));

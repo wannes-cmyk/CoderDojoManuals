@@ -1,0 +1,13 @@
+---
+// De volledige code van één sprite of van het speelveld. Elk stuk is apart
+// dichtgeklapt: een ninja zoekt eerst zelf en opent dan enkel de sprite die
+// niet doet wat hij wil. Zo vergelijkt hij in plaats van over te typen.
+interface Props { naam: string }
+const { naam } = Astro.props;
+---
+<details class="oplossing">
+  <summary>{naam}</summary>
+  <div class="oplossing-inhoud">
+    <slot />
+  </div>
+</details>

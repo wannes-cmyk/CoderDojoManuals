@@ -11,7 +11,7 @@ bron:
   url: https://drive.google.com/file/d/17jcUitU-bMMRD7MK9So-V9Nlg5mzdDU6/view
   door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -80,6 +80,35 @@ In het blokje kies je het geluid dat jij genomen hebt.
 Klik onderaan rechts op **Kies een achtergrond**. Zoek een podium of een dansvloer. De achtergrond **Spotlight** past er goed bij.
 
 <LetOp>Bewaar je project: **Bestand**, dan **Opslaan op je computer**.</LetOp>
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Danser">
+Twee scripts: één om te dansen, één voor de muziek. Jouw geluid kan een andere naam hebben.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+herhaal
+  neem (20) stappen
+  volgend uiterlijk
+  wacht (0.3) sec.
+  neem (-20) stappen
+  volgend uiterlijk
+  wacht (0.3) sec.
+einde
+
+wanneer op @greenFlag wordt geklikt
+herhaal
+  start geluid (Dance Celebrate v) en wacht
+einde
+```
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig. Enkel een achtergrond uit de bibliotheek, zoals **Spotlight**.
+</Oplossing>
 
 ## Uitdagingen
 

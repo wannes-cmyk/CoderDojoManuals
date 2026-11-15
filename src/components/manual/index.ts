@@ -3,3 +3,4 @@ export { default as Tip } from './Tip.astro';
 export { default as Test } from './Test.astro';
 export { default as LetOp } from './LetOp.astro';
 export { default as Coach } from './Coach.astro';
+export { default as Oplossing } from './Oplossing.astro';

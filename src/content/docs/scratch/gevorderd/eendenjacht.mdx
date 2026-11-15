@@ -11,7 +11,7 @@ bron:
   url: https://drive.google.com/file/d/1qgHR3kYJRU2z0S4TOOc2cMgC4IFCJqfR/view
   door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -134,6 +134,92 @@ verschijn
 ```
 
 <LetOp>Bewaar je project.</LetOp>
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Speelveld">
+Het speelveld is de scheidsrechter.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+maak [tijd v] (30)
+zend signaal [Start spel v]
+herhaal tot <(tijd) = (0)>
+  wacht (1) sec.
+  verander [tijd v] met (-1)
+einde
+zend signaal [Einde spel v]
+```
+</Oplossing>
+
+<Oplossing naam="Vizier">
+Drie scripts.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+
+wanneer ik signaal [Start spel v] ontvang
+verschijn
+herhaal
+  ga naar (muisaanwijzer v)
+  als <muis ingedrukt?> dan
+    start geluid (Pop v)
+    wacht tot <niet <muis ingedrukt?>>
+  einde
+einde
+
+wanneer ik signaal [Einde spel v] ontvang
+verdwijn
+stop [andere scripts in sprite v]
+```
+</Oplossing>
+
+<Oplossing naam="Papegaai (Parrot)">
+Vier scripts. De echte papegaai blijft verborgen, enkel de klonen vliegen.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+
+wanneer ik signaal [Start spel v] ontvang
+herhaal (8)
+  maak een kloon van (mijzelf v)
+einde
+
+wanneer ik als kloon start
+maak draaistijl [links-rechts v]
+ga naar (willekeurige positie v)
+richt naar (willekeurig getal tussen (-180) en (180)) graden
+verschijn
+herhaal
+  neem (5) stappen
+  keer om aan de rand
+  volgend uiterlijk
+  als <<muis ingedrukt?> en <raak ik (muisaanwijzer v)?>> dan
+    verander [score v] met (1)
+    ga naar (willekeurige positie v)
+  einde
+einde
+
+wanneer ik signaal [Einde spel v] ontvang
+verwijder deze kloon
+```
+</Oplossing>
+
+<Oplossing naam="Game over">
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+
+wanneer ik signaal [Einde spel v] ontvang
+ga naar x: (0) y: (0)
+verschijn
+```
+</Oplossing>
 
 ## Uitdagingen
 
