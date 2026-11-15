@@ -11,7 +11,7 @@ bron:
   url: https://drive.google.com/file/d/1pjv3kTl8w7pKaWh385-plCtML9aABXsW/view
   door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -83,6 +83,58 @@ einde
 ```
 
 <Test>Klik op de groene vlag en loop! Stopt het spel als de krab je te pakken heeft?</Test>
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Speler">
+Vijf scripts. Een voor de start en een voor elk pijltje.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak draaistijl [links-rechts v]
+ga naar x: (-150) y: (0)
+
+wanneer [pijltje rechts v] is ingedrukt
+richt naar (90) graden
+neem (10) stappen
+
+wanneer [pijltje links v] is ingedrukt
+richt naar (-90) graden
+neem (10) stappen
+
+wanneer [pijltje omhoog v] is ingedrukt
+verander y met (10)
+
+wanneer [pijltje omlaag v] is ingedrukt
+verander y met (-10)
+```
+</Oplossing>
+
+<Oplossing naam="Krab">
+Eén script. Kijk goed of het **als**-blok binnen **herhaal** staat.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak draaistijl [links-rechts v]
+ga naar x: (180) y: (120)
+maak [score v] (0)
+herhaal
+  richt naar (speler v)
+  neem (3) stappen
+  verander [score v] met (1)
+  als <raak ik (speler v)?> dan
+    start geluid (Scream1 v) en wacht
+    stop [alle v]
+  einde
+einde
+```
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig. Enkel een strand als achtergrond. De variabele `score` is er voor alle sprites.
+</Oplossing>
 
 ## Uitdagingen
 

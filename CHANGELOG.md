@@ -22,6 +22,7 @@ Het formaat volgt [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) en he
 - Link "Klopt er iets niet?" bij elke stap. Het formulier weet dan vanzelf over welke manual en welke stap het gaat.
 - In het feedbackformulier kan je een screenshot van je Scratch toevoegen. Niet verplicht.
 - Anonieme bezoekcijfers via Simple Analytics, zonder cookies en zonder persoonsgegevens.
+- Volledige oplossing onderaan elke manual, in blokjes. Per sprite en voor het speelveld apart dichtgeklapt, zodat een ninja enkel opent wat bij hem niet werkt en zijn code blok per blok kan vergelijken. Bij het sommenspel staat elke variant apart. De oplossingen komen niet mee op de printversie.
 
 ### Bekend
 

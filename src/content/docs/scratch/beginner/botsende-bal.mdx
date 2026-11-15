@@ -11,7 +11,7 @@ bron:
   url: https://drive.google.com/file/d/1F-ywQna5kMLhN-M_CH0ppdMVGxu78tlG/view
   door: CoderDojo Belgium, op basis van een voorbeeld van Sue Gray (UK)
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -48,6 +48,27 @@ einde
 <Test>
 Klik op de groene vlag. Stuitert de bal alle kanten op?
 </Test>
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Bal">
+Dit is de sprite die je zelf getekend hebt. Bij jou heet ze misschien **Sprite1**.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+richt naar (45) graden
+herhaal
+  neem (10) stappen
+  keer om aan de rand
+einde
+```
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig. De kat is weg, de achtergrond blijft wit.
+</Oplossing>
 
 ## Uitdagingen
 

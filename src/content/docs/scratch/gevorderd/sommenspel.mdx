@@ -10,7 +10,7 @@ bron:
   titel: Sommenspel
   url: https://drive.google.com/file/d/1Nd0mFFDTstMmdPGWo10wQYtPNH0PEJOE/view
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -129,6 +129,102 @@ vraag (voeg (voeg (getal1) en [ : ] samen) en (voeg (tafel) en [ = ?] samen) sam
 ```
 
 Het juiste antwoord is nu `quotiënt`.
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Kat: plusspel (stap 1 tot 4)">
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+herhaal (10)
+  maak [getal1 v] (willekeurig getal tussen (1) en (10))
+  maak [getal2 v] (willekeurig getal tussen (1) en (10))
+  maak [som v] ((getal1) + (getal2))
+  vraag (voeg (voeg (getal1) en [ + ] samen) en (voeg (getal2) en [ = ?] samen) samen) en wacht
+  als <(antwoord) = (som)> dan
+    zeg [Juist!] (1) sec.
+    verander [score v] met (1)
+  anders
+    zeg (voeg [Jammer, het was ] en (som) samen) (2) sec.
+  einde
+einde
+zeg (voeg [Je score is ] en (score) samen)
+```
+</Oplossing>
+
+<Oplossing naam="Kat: minspel (stap 5)">
+Maak eerst de variabele `verschil`.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+herhaal (10)
+  maak [getal1 v] (willekeurig getal tussen (1) en (20))
+  maak [getal2 v] (willekeurig getal tussen (1) en (getal1))
+  maak [verschil v] ((getal1) - (getal2))
+  vraag (voeg (voeg (getal1) en [ - ] samen) en (voeg (getal2) en [ = ?] samen) samen) en wacht
+  als <(antwoord) = (verschil)> dan
+    zeg [Juist!] (1) sec.
+    verander [score v] met (1)
+  anders
+    zeg (voeg [Jammer, het was ] en (verschil) samen) (2) sec.
+  einde
+einde
+zeg (voeg [Je score is ] en (score) samen)
+```
+</Oplossing>
+
+<Oplossing naam="Kat: maaltafels (stap 6)">
+Maak eerst de variabelen `tafel` en `product`. De vraag naar de tafel staat boven **herhaal**, zodat de kat ze maar één keer stelt.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+vraag [Welke tafel wil je oefenen?] en wacht
+maak [tafel v] (antwoord)
+herhaal (10)
+  maak [getal1 v] (willekeurig getal tussen (1) en (10))
+  maak [product v] ((getal1) * (tafel))
+  vraag (voeg (voeg (getal1) en [ x ] samen) en (voeg (tafel) en [ = ?] samen) samen) en wacht
+  als <(antwoord) = (product)> dan
+    zeg [Juist!] (1) sec.
+    verander [score v] met (1)
+  anders
+    zeg (voeg [Jammer, het was ] en (product) samen) (2) sec.
+  einde
+einde
+zeg (voeg [Je score is ] en (score) samen)
+```
+</Oplossing>
+
+<Oplossing naam="Kat: deeltafels (stap 7)">
+Maak eerst de variabele `quotiënt`. Eerst kiest de kat het antwoord, daarna rekent ze de opgave uit.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+vraag [Welke tafel wil je oefenen?] en wacht
+maak [tafel v] (antwoord)
+herhaal (10)
+  maak [quotiënt v] (willekeurig getal tussen (1) en (10))
+  maak [getal1 v] ((quotiënt) * (tafel))
+  vraag (voeg (voeg (getal1) en [ : ] samen) en (voeg (tafel) en [ = ?] samen) samen) en wacht
+  als <(antwoord) = (quotiënt)> dan
+    zeg [Juist!] (1) sec.
+    verander [score v] met (1)
+  anders
+    zeg (voeg [Jammer, het was ] en (quotiënt) samen) (2) sec.
+  einde
+einde
+zeg (voeg [Je score is ] en (score) samen)
+```
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig. Een achtergrond mag, maar hoeft niet.
+</Oplossing>
 
 ## Uitdagingen
 

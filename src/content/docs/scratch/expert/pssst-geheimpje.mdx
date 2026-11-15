@@ -11,7 +11,7 @@ bron:
   titel: Pssst! Geheimpje!
   url: https://docs.google.com/document/d/1YswAiud_RGzSoPSQE1DcjXEtAReqOJS-3FMFr-ttI7s/edit
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 Je pa die stiekem je berichtjes leest. Je juf die briefjes onderschept. Verschrikkelijk vervelend. Gelukkig ben jij al een echte programmeur.
 
@@ -174,6 +174,64 @@ Hoeveel sleutels bestaan er? Voor de a kan je kiezen uit 26 letters. Voor de b b
 Alle sleutels proberen lukt dus niet, zelfs niet met een supersnelle computer. Maar er is een slimmere manier. Sommige letters komen in het Nederlands veel vaker voor dan andere. De e is de koploper, de q hangt helemaal achteraan. Wie genoeg geheime berichten onderschept en telt hoe vaak elk teken voorkomt, kan de sleutel raden.
 
 Daarom is letters vervangen niet veilig genoeg voor superbelangrijke berichten. Voor briefjes in de klas blijft het een aanrader.
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Kat: versleutelen (stap 1 tot 6)">
+Drie scripts: de vlag en twee eigen blokken.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [alfabet v] [abcdefghijklmnopqrstuvwxyz]
+maak [sleutel v] [nbvcxwmlkjhgfdsqpoiuytreza]
+vraag [Welk bericht wil je versleutelen?] en wacht
+maak [invoer v] (antwoord)
+zet invoer om :: custom
+zeg (resultaat)
+
+definieer zet invoer om
+maak [resultaat v] []
+maak [i v] (1)
+herhaal (lengte van (invoer) :: operators)
+  maak [letter v] (letter (i) van (invoer) :: operators)
+  zet letter om :: custom
+  maak [resultaat v] (voeg (resultaat) en (letter omgezet) samen)
+  verander [i v] met (1)
+einde
+
+definieer zet letter om
+maak [letter omgezet v] (letter)
+maak [plaats v] (1)
+herhaal (26)
+  als <(letter (plaats) van (alfabet) :: operators) = (letter)> dan
+    maak [letter omgezet v] (letter (plaats) van (sleutel) :: operators)
+  einde
+  verander [plaats v] met (1)
+einde
+```
+
+Het vakje achter **maak resultaat** in het tweede script is echt leeg.
+</Oplossing>
+
+<Oplossing naam="Kat: ontsleutelen (stap 7, één manier)">
+Er zijn meer manieren. Dit is de makkelijkste: wissel `alfabet` en `sleutel` om. De twee eigen blokken blijven precies hetzelfde.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [alfabet v] [nbvcxwmlkjhgfdsqpoiuytreza]
+maak [sleutel v] [abcdefghijklmnopqrstuvwxyz]
+vraag [Welk bericht wil je ontsleutelen?] en wacht
+maak [invoer v] (antwoord)
+zet invoer om :: custom
+zeg (resultaat)
+```
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig.
+</Oplossing>
 
 ## Uitdagingen
 

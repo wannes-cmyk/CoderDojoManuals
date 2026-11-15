@@ -30,8 +30,9 @@ Kopieer `docs/sjabloon.mdx`. De vaste volgorde is:
 2. Eventueel een korte inleiding.
 3. `<Nodig>`: wat je nodig hebt.
 4. De stappen: `## Stap 1: ...`, `## Stap 2: ...`. Het cijfer en het afvinken komen er vanzelf bij.
-5. `## Uitdagingen`.
-6. `<Coach>`.
+5. `## Oplossing`, met een `<Oplossing>` per sprite en een voor het speelveld.
+6. `## Uitdagingen`.
+7. `<Coach>`.
 
 De infobalk bovenaan, de knoppen en de bronvermelding onderaan worden automatisch gemaakt uit de frontmatter.
 
@@ -43,6 +44,7 @@ De infobalk bovenaan, de knoppen en de bronvermelding onderaan worden automatisc
 | `<Test>` | Testmoment. Minstens na elke stap waarin code bijkomt. |
 | `<Tip>` | Maakt iets makkelijker, of een weetje. Eigen titel kan: `<Tip titel="Wiskundeweetje">`. |
 | `<LetOp>` | Waar het vaak fout loopt. Spaarzaam. |
+| `<Oplossing>` | Dicht blok met alle code van één sprite of van het speelveld, zoals die er na de laatste stap uitziet. Eén per sprite, plus een voor het speelveld. Heeft iets geen code, schrijf dan "Geen code nodig." en wat er wel moet zijn (een tekening, een achtergrond). `<Oplossing naam="Kat">` |
 | `<Coach>` | Dicht blok voor de coach. Eén keer, onderaan. |
 
 ### Blokjes schrijven
@@ -77,7 +79,8 @@ De juiste Nederlandse namen staan in `node_modules/scratchblocks/locales/nl.json
 - Zeg waar iets staat: "bij **Besturen**", "onderaan rechts".
 - Sprites en geluiden uit de bibliotheek heten vaak Engels. Schrijf beide: de **krab** (Crab).
 - Na code komt een test.
-- Geen oplossingen bij de uitdagingen.
+- Geen oplossingen bij de uitdagingen. Wel een volledige oplossing van het project zelf, onder `## Oplossing`.
+- Kopieer de oplossing uit je eigen stappen, blok per blok. Staan er in de stappen en in de oplossing andere getallen of namen, dan zoekt een kind een fout die er niet is.
 - Geen `<` of `{` in gewone tekst.
 
 ## 5. Werk de inventaris bij

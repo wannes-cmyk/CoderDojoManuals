@@ -10,7 +10,7 @@ bron:
   titel: Attack of the clones
   url: https://docs.google.com/document/d/1P1YFLFINVfE3Wbv2VuGQodvtIJlcrt0H2OT4XNr23Wc/edit
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 Soms is het plezant om eens goed te overdrijven. Een ijsje met zeven bollen is cooler dan een met één bol. En een project met overdreven veel sprites maakt meer indruk dan een project met één sprite.
 
@@ -194,6 +194,53 @@ einde
 Met **verwijder deze kloon** verdwijnt enkel een kloon. De echte sprite blijft altijd bestaan.
 
 Heb je dit allemaal doorworsteld? Cool gedaan.
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Beest">
+Zo ziet je beest eruit na stap 10. Vier scripts. Het spatiebalkscript staat hier niet meer: dat zit bij het speelveld.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+verdwijn
+herhaal (20)
+  maak een kloon van (mijzelf v)
+einde
+
+wanneer ik als kloon start
+verschijn
+wandel :: custom
+
+definieer wandel
+ga naar x: (0) y: (0)
+richt naar (willekeurig getal tussen (1) en (360)) graden
+herhaal
+  neem (3) stappen
+  als <raak ik (rand v)?> dan
+    verwijder deze kloon
+  einde
+einde
+
+wanneer op deze sprite wordt geklikt
+verander [klikken v] met (1)
+zeg (klikken) (1) sec.
+```
+
+De variabele `klikken` maak je met **Alleen voor deze sprite**. Anders delen alle klonen dezelfde teller.
+
+Heb je in stap 7 de **herhaal 20** weggehaald? Dan staat bij jou onder de vlag maar één **maak een kloon**. Dat is ook goed.
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Eén script. Kies in het blokje de naam van jouw beest.
+
+```scratch
+wanneer [spatiebalk v] is ingedrukt
+maak een kloon van (Beetle v)
+```
+</Oplossing>
 
 ## Uitdagingen
 

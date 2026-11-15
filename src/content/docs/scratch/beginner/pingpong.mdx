@@ -10,7 +10,7 @@ bron:
   titel: Pingpong
   url: https://drive.google.com/file/d/1KRjsMvWdt7KEo0OceZYgH-8s7huowkgq/view
 ---
-import { Nodig, Tip, Test, LetOp, Coach } from '~/components/manual';
+import { Nodig, Tip, Test, LetOp, Coach, Oplossing } from '~/components/manual';
 
 <Nodig>
 - Scratch, open in je browser
@@ -128,6 +128,51 @@ einde
 ```
 
 <Test>Speel je spel. Krijg je een punt als je de bal raakt? Verlies je er een als je mist?</Test>
+
+## Oplossing
+
+Werkt iets niet? Zoek eerst zelf. Dat is het echte programmeerwerk. Lukt het niet, open dan enkel de sprite die niet doet wat je wil, en vergelijk blok per blok met jouw code.
+
+<Oplossing naam="Palet (Paddle)">
+```scratch
+wanneer [pijltje rechts v] is ingedrukt
+verander x met (10)
+
+wanneer [pijltje links v] is ingedrukt
+verander x met (-10)
+```
+</Oplossing>
+
+<Oplossing naam="Bal (Ball)">
+Eén groot script. Beide **als**-blokken staan binnen **herhaal**.
+
+```scratch
+wanneer op @greenFlag wordt geklikt
+maak [score v] (0)
+ga naar x: (0) y: (150)
+richt naar (135) graden
+herhaal
+  neem (8) stappen
+  keer om aan de rand
+  als <raak ik (Paddle v)?> dan
+    start geluid (Boing v)
+    verander [score v] met (1)
+    richt naar (willekeurig getal tussen (-60) en (60)) graden
+    neem (15) stappen
+  einde
+  als <raak ik kleur [#ff0000]?> dan
+    verander [score v] met (-1)
+    ga naar x: (willekeurig getal tussen (-200) en (200)) y: (150)
+  einde
+einde
+```
+
+De kleur in het blokje moet precies het rood van jouw muur zijn. Kies ze altijd met de **pipet**.
+</Oplossing>
+
+<Oplossing naam="Speelveld">
+Geen code nodig. Wel een tekening: een dikke rode lijn helemaal onderaan de achtergrond.
+</Oplossing>
 
 ## Uitdagingen
 

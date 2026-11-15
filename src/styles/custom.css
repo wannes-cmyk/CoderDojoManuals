@@ -278,6 +278,25 @@ pre.blocks svg { display: block; max-width: none; }
 .coach-inhoud > * + * { margin-top: 0.75rem; }
 .coach-status { color: var(--inkt-zacht); font-size: 0.9375rem; }
 
+/* Oplossing: één dicht blok per sprite. Een volle lijn, zodat het niet
+   verward wordt met het gestreepte coachblok. */
+.oplossing {
+  margin-block: 0.75rem;
+  border: 2px solid var(--lijn);
+  border-radius: var(--rond);
+  background: var(--plaat);
+}
+.oplossing summary {
+  cursor: pointer;
+  padding: 0.7rem 1.1rem;
+  font-weight: 700;
+  color: var(--inkt);
+}
+.oplossing summary:hover { background: var(--grond-diep); border-radius: calc(var(--rond) - 2px); }
+.oplossing-inhoud { padding: 0 1.1rem 1rem; }
+.oplossing-inhoud > * + * { margin-top: 0.75rem; }
+.oplossing-inhoud pre.blocks { margin-block: 0.75rem; }
+
 /* Overzicht van manuals: een lijst, geen rij kaarten. */
 .manual-lijst { list-style: none; padding: 0; margin: 1rem 0 2.5rem; border-top: 2px solid var(--inkt); }
 .manual-lijst li { margin: 0; border-bottom: 1px solid var(--lijn); }
@@ -306,7 +325,7 @@ pre.blocks svg { display: block; max-width: none; }
   :root, :root[data-theme='light'] { --grond: #fff; --grond-diep: #fff; --sl-color-bg: #fff; --sl-color-black: #fff; }
   html, body { background: #fff !important; }
   header.header, .sidebar-pane, .right-sidebar-container, mobile-starlight-toc,
-  .manual-knoppen, .stap-klaar, .stap-fout, .coach, .pagination-links, .site-voet,
+  .manual-knoppen, .stap-klaar, .stap-fout, .coach, .oplossing, .pagination-links, .site-voet,
   starlight-menu-button { display: none !important; }
   .main-frame, .main-pane, .sl-container { padding: 0 !important; margin: 0 !important; max-width: none !important; }
   body { font-size: 11pt; }
